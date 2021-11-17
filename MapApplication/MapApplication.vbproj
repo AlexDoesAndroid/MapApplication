@@ -93,7 +93,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\map.png" />
-    <Content Include="index.html" />
+    <Content Include="map.html" />
+    <Content Include="tutorial.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
