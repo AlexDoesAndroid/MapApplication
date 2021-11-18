@@ -94,8 +94,10 @@
   <ItemGroup>
     <Content Include="images\map.png" />
     <Content Include="map.html" />
+    <Content Include="MapSS.css" />
     <Content Include="Mithril.js" />
     <Content Include="tutorial.html" />
+    <Content Include="TutorialSS.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
