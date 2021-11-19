@@ -96,6 +96,7 @@
     <Content Include="map.html" />
     <Content Include="MapSS.css" />
     <Content Include="Mithril.js" />
+    <Content Include="The Forms.html" />
     <Content Include="tutorial.html" />
     <Content Include="TutorialSS.css" />
     <Content Include="Web.config" />
