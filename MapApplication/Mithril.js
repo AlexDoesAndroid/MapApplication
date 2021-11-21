@@ -15,7 +15,7 @@ $(document).ready(function () {
 //comment the below out to get the map back
 ///*
 var app = document.getElementById("hello")
-m.render(app, "Hello world");
+m.render(app, "Hello world"); 
 //*/
 
 
@@ -30,7 +30,7 @@ var modal = {
 }
 modal.visible = false;
 modal.view = function (body) {
-    return modal.visible() ? m(".modal", body()) : ""
+    return modal.visible() ? m.render(".modal", body()) : ""
 }
 
 //in your other view
@@ -42,7 +42,7 @@ var myOtherView = function () {
         //its visibility is taken care by the modal itself
         //positioning is controlled via CSS
         modal.view(function () {
-            return m("p", "modal content goes here")
+            return m.render("p", "modal content goes here")
   })
 }
 

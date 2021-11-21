@@ -17,10 +17,14 @@ body, html {
 }
 
 .modal {
-    width: 20%;
-    height: 20%;
-    position: relative;
-    border: 1px black solid;
+    position: absolute;
+    z-index: 500;
+    width: 25%;
+    height: 25%;
+    border: 2px thick solid black;
+    background-size: 100% auto;
+    background-color: black;
+    top: 100%;
 }
 
 .hello {
