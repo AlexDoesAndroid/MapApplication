@@ -48,14 +48,23 @@ var myOtherView = function () {
 
 document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
+var displayThis = "Hey this should be a box with text in it";
+
 const Button = {
     view(vnode) {
-        return m("button", {
-            onclick() {
-                console.log(vnode);
-            }
-        }, "Button");
+        return [
+            m("button", {
+                onclick() {
+                    console.log(vnode);
+
+
+                }
+
+            }, "Button"),
+            m('div', displayThis)
+        ];
     }
+    
 };
 
 m.mount(document.body, {
