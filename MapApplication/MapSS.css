@@ -22,3 +22,25 @@ body, html {
     position: relative;
     border: 1px black solid;
 }
+
+.hello {
+    position: absolute;
+    z-index: 500;
+    width: 25%;
+    height: 25%;
+    border: 2px thick solid black;
+    background-size: 100% auto;
+    background-color: black;
+    top: 100%;
+}
+
+.myOtherView {
+    position: absolute;
+    z-index: 500;
+    width: 25%;
+    height: 25%;
+    border: 2px thick solid black;
+    background-size: 100% auto;
+    background-color: black;
+    top: 100%;
+}

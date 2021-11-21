@@ -14,21 +14,18 @@ $(document).ready(function () {
 
 //comment the below out to get the map back
 ///*
-var App = {
-    view: function () {
-        return "Hello, this is a component";
-    }
-}
-m.mount(document.getElementById("#hello"), App);
-("Mithril");
+var app = document.getElementById("hello")
+m.render(app, "Hello world");
 //*/
 
 
 
 
 //modal module
+//var F = m.prop(false)
+
 var modal = {}
-modal.visible = m.prop(false)
+modal.visible = false;
 modal.view = function (body) {
     return modal.visible() ? m(".modal", body()) : ""
 }
