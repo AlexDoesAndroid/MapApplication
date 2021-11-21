@@ -24,7 +24,10 @@ m.render(app, "Hello world");
 //modal module
 //var F = m.prop(false)
 
-var modal = {}
+/*
+var modal = {
+
+}
 modal.visible = false;
 modal.view = function (body) {
     return modal.visible() ? m.render(".modal", body()) : ""
@@ -33,7 +36,7 @@ modal.view = function (body) {
 //in your other view
 var myOtherView = function () {
     //this button sets the flag to true
-    m.render("button[type=button]", { onclick: modal.visible.bind(this, true) }, "Show modal"),
+    m('button[type="button"]', { onclick: modal.visible.bind(this, true) }, "Show modal"),
 
         //include the modal anywhere it makes sense to
         //its visibility is taken care by the modal itself
@@ -43,5 +46,22 @@ var myOtherView = function () {
   })
 }
 
+document.getElementById("#modal").onclick = m.withAttr(myOtherView());
+**/
+const Button = {
+    view(vnode) {
+        return m("button", {
+            onclick() {
+                console.log(vnode);
+            }
+        }, "Button");
+    }
+};
 
-m.mount(document.body, Component)
+m.mount(document.body, {
+    view() {
+        return m(".bg",
+            m(Button)
+        );
+    }
+});
