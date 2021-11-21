@@ -2,15 +2,16 @@
 }
 body, html {
     height: 100%;
+    margin: 0;
 }
 
 .bg {
     background-image: url(images/map.png);
-    height: 1500px;
-    width: 900px;
+    height: 300%;
+    width: 100%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
     top: 0;
     left: 0;
 }

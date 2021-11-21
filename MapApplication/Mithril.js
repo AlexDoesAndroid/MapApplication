@@ -19,8 +19,10 @@ var App = {
         return "Hello, this is a component";
     }
 }
-m.mount(document.body, App);
+m.mount(document.getElementById("#hello"), App);
+("Mithril");
 //*/
+
 
 
 
@@ -40,6 +42,6 @@ var myOtherView = function () {
         //its visibility is taken care by the modal itself
         //positioning is controlled via CSS
         modal.view(function () {
-            return m("p, "modal content goes here")
+            return m("p", "modal content goes here")
   })
 }
