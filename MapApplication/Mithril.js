@@ -49,6 +49,11 @@ var myOtherView = function () {
 document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 var displayThis = "Hey this should be a box with text in it";
+var generateDiv = {
+    view: function () {
+        m('div', displayThis)
+    }
+}
 
 const Button = {
     view(vnode) {
@@ -56,12 +61,13 @@ const Button = {
             m("button", {
                 onclick() {
                     console.log(vnode);
-
+                    m(generateDiv.view);
+                    displayThis = "This is J&H";
 
                 }
 
             }, "Button"),
-            m('div', displayThis)
+            
         ];
     }
     
