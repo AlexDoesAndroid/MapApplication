@@ -24,6 +24,7 @@ m.render(app, "Hello world");
 //modal module
 //var F = m.prop(false)
 
+/*
 var modal = {
 
 }
@@ -45,4 +46,22 @@ var myOtherView = function () {
   })
 }
 
-document.getElementById("#modal").onclick = m.withAttr()
+document.getElementById("#modal").onclick = m.withAttr(myOtherView());
+**/
+const Button = {
+    view(vnode) {
+        return m("button", {
+            onclick() {
+                console.log(vnode);
+            }
+        }, "Button");
+    }
+};
+
+m.mount(document.body, {
+    view() {
+        return m(".bg",
+            m(Button)
+        );
+    }
+});
