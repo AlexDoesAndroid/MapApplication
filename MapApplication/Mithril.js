@@ -72,7 +72,8 @@ var App = {
 m.mount(document.body, App)
     
 
-var displayThis = "Hey this should be a box with text in it";
+var displayJnH = "Hey this should be a box with text in it";
+var displaySS = "Hey this should be a box with text in it";
 var generateDiv = {
     view: function () {
         return m('div', displayThis)
@@ -81,8 +82,6 @@ var generateDiv = {
 
 
 
-jnh = document.createElement('div');
-jnh.setAttribute("id", "Div1");
 const JnHButton = {
     view(vnode) {
         return [
@@ -91,9 +90,24 @@ const JnHButton = {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#this', { style: { background: 'white', display: 'none', padding: '1%' } }, displayThis),
+            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH),
             //document.getElementById('#this').display = 'none'
             
+        ];
+    }
+
+};
+const studentCenterButton = {
+    view(vnode) {
+        return [
+
+            m("button#StudentCenter", {
+                onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+            }, "Button"),
+            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            //document.getElementById('#this').display = 'none'
+
         ];
     }
 
@@ -101,15 +115,24 @@ const JnHButton = {
 var jnhClickListener = {
     handleEvent: function (e) {
         console.log(e)
-        document.getElementById('this').style.display = 'inline-block';
-        displayThis = "This is J&H";
+        document.getElementById('JnHbtn').style.display = 'inline-block';
+        displayJnH = "This is J&H";
         //here we should have a refrence to an array or an object to be put in the div
     }
-
+}
+var ssClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        document.getElementById('StudentCenterbtn').style.display = 'inline-block';
+        displaySS = "This is The Student Center";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
 }
 
 m.mount(document.body, {
     view() {
-        return m(".bg", m(JnHButton));
+        return [
+            m(".bg", m(JnHButton), m(studentCenterButton))
+        ];
     }
 });
