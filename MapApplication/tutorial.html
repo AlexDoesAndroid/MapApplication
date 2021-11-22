@@ -1,15 +1,65 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <title></title>
-    <script src="https://unpkg.com/mithril/mithril.js"></script>
+	<meta charset="utf-8" />
+	<title></title>
+	<script src="https://unpkg.com/mithril/mithril.js"></script>
+	<link rel="stylesheet" type="text/css" href="TutorialSS.css">
 </head>
 <body>
+	<ul>
+		<li><a href="map.html">Application</a></li>
+	</ul>
+	
 
-    <a href="map.html">Applicationt</a>
+	<p>Before you can run any Mithril you need to get the framework using CDN.</p>
 
-    <p>Heres where we are going to put tutorial details!</p>
+	<pre class="sampleCode">
+		&lt;html&gt;
+		 &lt;body&gt;
+		  &lt;script src = "https://unpkg.com/mithril"&gt;&lt;/script&gt;  
+		 &lt;/body&gt;
+		&lt;/html&gt;	
+	</pre>
 
+	<!-- Link to m.mount documentation
+		https://mithril.js.org/mount.html
+	-->
+
+	<p>Now lets talk about hello world. In Mithril m.mount is the best way to do this. </p>
+	<p>m.mount activates a component, enabling it to autoredraw on user events </p>
+	<p>The syntac for this is "m.mount(element, Component)"</p>
+
+	<pre class="sampleCode">
+		&lt;script&gt;   
+		 var App = {
+			view: function() {
+			return "Hello World"
+			}
+		   }
+		 m.mount(document.body, App)
+		&lt;/script&gt;  	
+	</pre>
+
+
+
+	<p>The m() function can be used to describe any HTML structure you want. So if you need to add a class to the h1 you can do it with Mithril</p>
+
+	<pre class="sampleCode">
+		&lt;script&gt;   
+		 var App = {
+		  view: function() {
+			return m("main", [
+				m("h1", {class: "title"}, "Page Title"),
+				m("p", "Hello World"),
+		  ])
+		 }
+		}		 
+
+		 m.mount(document.body, App)
+		&lt;/script&gt;  	
+	</pre>
+	<p>Running this code will give you: </p>
+	<img src="images/wrapMithril.PNG" />
 </body>
 </html>
