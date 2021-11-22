@@ -83,7 +83,7 @@ var generateDiv = {
 
 jnh = document.createElement('div');
 jnh.setAttribute("id", "Div1");
-const Button = {
+const JnHButton = {
     view(vnode) {
         return [
             
@@ -103,14 +103,13 @@ var jnhClickListener = {
         console.log(e)
         document.getElementById('this').style.display = 'inline-block';
         displayThis = "This is J&H";
+        //here we should have a refrence to an array or an object to be put in the div
     }
 
 }
 
 m.mount(document.body, {
     view() {
-        return m(".bg",
-            m(Button)
-        );
+        return m(".bg", m(JnHButton));
     }
 });
