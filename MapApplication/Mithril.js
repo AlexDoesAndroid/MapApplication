@@ -78,21 +78,34 @@ var generateDiv = {
         return m('div', displayThis)
     }
 }
+
+
+
 jnh = document.createElement('div');
 jnh.setAttribute("id", "Div1");
 const Button = {
     view(vnode) {
         return [
+            
             m("button#JnH", {
-                onclick() { console.log(vnode); displayThis = "This is J&H"; m('div#this',) }
+                onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#this', { style: { background: 'white', display: 'none', padding: '1%'  } }, displayThis)
-
+            m('div.diplay#this', { style: { background: 'white', display: 'none', padding: '1%' } }, displayThis),
+            //document.getElementById('#this').display = 'none'
+            
         ];
     }
 
 };
+var jnhClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        document.getElementById('this').style.display = 'inline-block';
+        displayThis = "This is J&H";
+    }
+
+}
 
 m.mount(document.body, {
     view() {
