@@ -75,17 +75,18 @@ m.mount(document.body, App)
 var displayThis = "Hey this should be a box with text in it";
 var generateDiv = {
     view: function () {
-        m('div', displayThis)
+        return m('div', displayThis)
     }
 }
-
+jnh = document.createElement('div');
+jnh.setAttribute("id", "Div1");
 const Button = {
     view(vnode) {
         return [
             m("button", {
                 onclick() {
                     console.log(vnode);
-                    m(generateDiv.view);
+                    
                     displayThis = "This is J&H";
 
                 }
