@@ -45,6 +45,32 @@ var myOtherView = function () {
 document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 
+// some useful sample code on components 
+/*
+var appstate = null
+var appdata = ['left', 'middleLeft', 'middle', 'right']
+var ButtonComponent = {
+    view: function (vnode) {
+        return m('button', {
+            onclick: function (e) {
+                appstate = e.target.textContent
+            }
+        }, vnode.attrs.lable)
+    }
+}
+
+var App = {
+    view: function () {
+        return [
+            appdata.map(function (item) {
+                return m(ButtonComponent, { lable: item })
+            }),
+            appstate !== null && m('h2', appstate)
+        ]
+    }
+}
+m.mount(document.body, App)
+    ** /
 
 var displayThis = "Hey this should be a box with text in it";
 var generateDiv = {
@@ -65,7 +91,8 @@ const Button = {
                 }
 
             }, "Button"),
-            
+
+
         ];
     }
 
