@@ -71,8 +71,8 @@ body, html {
     position: absolute;
     z-index: 100;
     width: 32pc; /* this where you change johnson and hardwick hitbox dimensions*/
-
-    height: 30pc;
+    
+    height: 35pc;
     border: 2px thick solid black;
     opacity: 0.2;
 }
@@ -83,6 +83,7 @@ body, html {
     width: 20%;
     height: 10%;
     border: 2px thick solid black;
-    top: 10%;
-    left: 20%;
+    top: 12%;
+    left: 15%;
+    border-radius: 0px 50px 30px 30px
 }

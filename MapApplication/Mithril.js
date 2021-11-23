@@ -90,6 +90,17 @@ const JnHButton = {
     }
 
 };
+//this is the JNH event handler that handles the onclick event from the buttons
+var jnhClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('JnHbtn').style.display = 'inline-block';
+        displayJnH = "This is J&H";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
+
 //this is the Student center button
 const studentCenterButton = {
     view(vnode) {
@@ -105,18 +116,6 @@ const studentCenterButton = {
         ];
     }
 };
-
-
-//this is the JNH event handler that handles the onclick event from the buttons
-var jnhClickListener = {
-    handleEvent: function (e) {
-        console.log(e)
-        //this is javascript that unhides the div
-        document.getElementById('JnHbtn').style.display = 'inline-block';
-        displayJnH = "This is J&H";
-        //here we should have a refrence to an array or an object to be put in the div
-    }
-}
 //this is the student center event handler that handles the onclick event for the button
 var ssClickListener = {
     handleEvent: function (e) {
@@ -128,11 +127,89 @@ var ssClickListener = {
     }
 }
 
+//this is the SERC button
+const SERCButton = {
+    view(vnode) {
+        return [
+            //this creates a button and adds an event handler as well as creating a div and hiding it
+            m("button#SERC", {
+                onclick: sercClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+            }, "Button"),
+            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            //document.getElementById('#this').display = 'none'
+
+        ];
+    }
+};
+var sercClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('SERCDiv').style.display = 'inline-block';
+        displaySS = "This is The SERC";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
+
+const Paley = {
+    view(vnode) {
+        return [
+            //this creates a button and adds an event handler as well as creating a div and hiding it
+            m("button#PalyHall", {
+                onclick: paleyClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+            }, "Button"),
+            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            //document.getElementById('#this').display = 'none'
+
+        ];
+    }
+};
+var paleyClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('PalyDiv').style.display = 'inline-block';
+        displaySS = "This is The Paley";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
+
+const Presser = {
+    view(vnode) {
+        return [
+            //this creates a button and adds an event handler as well as creating a div and hiding it
+            m("button#PresserHall", {
+                onclick: presserClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+            }, "Button"),
+            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            //document.getElementById('#this').display = 'none'
+
+        ];
+    }
+};
+var presserClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('PresserDiv').style.display = 'inline-block';
+        displaySS = "This is The Presser Hall";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
+
+
+
+
+
+
 //this puts the button on the correct div on load
 m.mount(document.body, {
     view() {
         return [
-            m(".bg", m(JnHButton), m(studentCenterButton))
+            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser))
         ];
     }
 });
@@ -185,3 +262,9 @@ class Attractions {
         this.attrDescrip = value;
     }
 }
+//create a method that takes the form inputs and runs it through the class, also adding it to local storage
+
+//create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
+//a component
+
+
