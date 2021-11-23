@@ -105,8 +105,6 @@ const studentCenterButton = {
         ];
     }
 };
-
-};
 //this is the JNH event handler that handles the onclick event from the buttons
 var jnhClickListener = {
     handleEvent: function (e) {
