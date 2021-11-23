@@ -159,5 +159,28 @@ class Attractions {
         this.attrDirections = genDirections;
         this.attrDescrip = descrip;
     }
-
+    get TheLocation() {
+        return this.attrLocation
+    }
+    set TheLocation(value) {
+        this.attrLocation = value;
+    }
+    get AttractionName() {
+        return this.attrName;
+    }
+    set AttractionName(value) {
+        this.attrName = value
+    }
+    get AtrractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
+    get AttractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
 }
