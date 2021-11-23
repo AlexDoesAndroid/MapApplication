@@ -1,5 +1,27 @@
-﻿body {
+﻿.topnav {
+    overflow: hidden;
+    background-color: #333;
 }
+
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
 body, html {
     height: 100%;
     margin: 0;
@@ -7,11 +29,11 @@ body, html {
 
 .bg {
     background-image: url(images/map.png);
-    height: 300%;
-    width: 100%;
+    height: 150pc; /*image size */
+    width: 150pc;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: 90% 90%; /* here is where you adjust bg pic fill within the div*/
     top: 0;
     left: 0;
     position: absolute;
@@ -48,15 +70,24 @@ body, html {
     background-size: 100% auto;
     background-color: black;
     top: 100%;
-    display: 
 }
 
 #JnH {
     position: absolute;
     z-index: 100;
+    width: 32pc; /* this where you change johnson and hardwick hitbox dimensions*/
+
+    height: 30pc;
+    border: 2px thick solid black;
+    opacity: 0.2;
+}
+
+#JnHbtn {
+    position: absolute;
+    z-index: 100;
     width: 20%;
     height: 10%;
     border: 2px thick solid black;
-    top: 20%;
-    opacity: 0.2;
+    top: 10%;
+    left: 20%;
 }
