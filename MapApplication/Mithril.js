@@ -45,7 +45,7 @@ document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 
 // some useful sample code on components 
-
+/*
 var appstate = null
 var appdata = ['left', 'middleLeft', 'middle', 'right']
 var ButtonComponent = {
@@ -69,7 +69,7 @@ var App = {
     }
 }
 m.mount(document.body, App)
-    
+    */
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
@@ -136,3 +136,28 @@ m.mount(document.body, {
         ];
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Attractions {
+    constructor(location, attractName, genDirections, descrip) {
+        this.attrLocation = location;
+        this.attrName = attractName;
+        this.attrDirections = genDirections;
+        this.attrDescrip = descrip;
+    }
+
+}
