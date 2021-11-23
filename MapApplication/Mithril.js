@@ -95,10 +95,20 @@ var jnhClickListener = {
     handleEvent: function (e) {
         console.log(e)
         //this is javascript that unhides the div
+        var i = 0;
+        if (i % 2 == 1) { 
         document.getElementById('JnHbtn').style.display = 'inline-block';
-        displayJnH = "This is J&H";
-        //here we should have a refrence to an array or an object to be put in the div
-    }
+            displayJnH = "This is J&H";
+            i++;
+                         }
+        if (i % 2 == 0) {
+            document.getElementById('JnHbtn').style.display = 'none';
+            displayJnH = "This is J&H";
+            i++;
+        }
+            //here we should have a refrence to an array or an object to be put in the div
+        
+        }
 }
 
 //this is the Student center button
@@ -126,6 +136,7 @@ var ssClickListener = {
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
+
 
 //this is the SERC button
 const SERCButton = {
