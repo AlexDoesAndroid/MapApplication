@@ -92,6 +92,8 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="home.html" />
+    <Content Include="HomeSS.css" />
     <Content Include="images\map.png" />
     <Content Include="map.html" />
     <Content Include="MapSS.css" />
