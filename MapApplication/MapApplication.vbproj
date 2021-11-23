@@ -94,6 +94,7 @@
   <ItemGroup>
     <Content Include="home.html" />
     <Content Include="HomeSS.css" />
+    <Content Include="images\logo.png" />
     <Content Include="images\map.png" />
     <Content Include="map.html" />
     <Content Include="MapSS.css" />

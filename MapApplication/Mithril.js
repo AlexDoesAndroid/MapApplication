@@ -45,7 +45,7 @@ document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 
 // some useful sample code on components 
-/*
+
 var appstate = null
 var appdata = ['left', 'middleLeft', 'middle', 'right']
 var ButtonComponent = {
@@ -136,6 +136,7 @@ m.mount(document.body, {
         ];
     }
 });
+
 
 
 
