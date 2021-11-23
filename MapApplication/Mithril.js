@@ -72,32 +72,68 @@ var App = {
 m.mount(document.body, App)
     
 
-var displayThis = "Hey this should be a box with text in it";
-var generateDiv = {
-    view: function () {
-        return m('div', displayThis)
-    }
-}
+var displayJnH = "Hey this should be a box with text in it";
+var displaySS = "Hey this should be a box with text in it";
 
-jnh = document.createElement('div');
-jnh.setAttribute("id", "Div1");
-const Button = {
+//this is the JNH button, should always be the first button
+const JnHButton = {
     view(vnode) {
         return [
+            //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#JnH", {
-                onclick() { console.log(vnode); displayThis = "This is J&H"; m('div#this',) }
+                onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#this', { style: { background: 'white', display: 'none', padding: '1%'  } }, displayThis)
+            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH),
+            //document.getElementById('#this').display = 'none'
+            
+        ];
+    }
+
+};
+//this is the Student center button
+const studentCenterButton = {
+    view(vnode) {
+        return [
+            //this creates a button and adds an event handler as well as creating a div and hiding it
+            m("button#StudentCenter", {
+                onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+            }, "Button"),
+            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            //document.getElementById('#this').display = 'none'
+
         ];
     }
 };
 
+};
+//this is the JNH event handler that handles the onclick event from the buttons
+var jnhClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('JnHbtn').style.display = 'inline-block';
+        displayJnH = "This is J&H";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
+//this is the student center event handler that handles the onclick event for the button
+var ssClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById('StudentCenterbtn').style.display = 'inline-block';
+        displaySS = "This is The Student Center";
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
 
+//this puts the button on the correct div on load
 m.mount(document.body, {
     view() {
-        return m(".bg",
-            m(Button)
-        );
+        return [
+            m(".bg", m(JnHButton), m(studentCenterButton))
+        ];
     }
 });

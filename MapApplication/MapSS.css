@@ -48,4 +48,15 @@ body, html {
     background-size: 100% auto;
     background-color: black;
     top: 100%;
+    display: 
+}
+
+#JnH {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    height: 10%;
+    border: 2px thick solid black;
+    top: 20%;
+    opacity: 0.2;
 }
