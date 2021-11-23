@@ -45,7 +45,7 @@ document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 
 // some useful sample code on components 
-
+/*
 var appstate = null
 var appdata = ['left', 'middleLeft', 'middle', 'right']
 var ButtonComponent = {
@@ -69,7 +69,7 @@ var App = {
     }
 }
 m.mount(document.body, App)
-    
+    */
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
@@ -105,6 +105,8 @@ const studentCenterButton = {
         ];
     }
 };
+
+
 //this is the JNH event handler that handles the onclick event from the buttons
 var jnhClickListener = {
     handleEvent: function (e) {
@@ -134,3 +136,51 @@ m.mount(document.body, {
         ];
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Attractions {
+    constructor(location, attractName, genDirections, descrip) {
+        this.attrLocation = location;
+        this.attrName = attractName;
+        this.attrDirections = genDirections;
+        this.attrDescrip = descrip;
+    }
+    get TheLocation() {
+        return this.attrLocation
+    }
+    set TheLocation(value) {
+        this.attrLocation = value;
+    }
+    get AttractionName() {
+        return this.attrName;
+    }
+    set AttractionName(value) {
+        this.attrName = value
+    }
+    get AtrractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
+    get AttractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
+}
