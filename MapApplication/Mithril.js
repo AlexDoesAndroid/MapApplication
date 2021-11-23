@@ -78,6 +78,7 @@ var generateDiv = {
         return m('div', displayThis)
     }
 }
+
 jnh = document.createElement('div');
 jnh.setAttribute("id", "Div1");
 const Button = {
@@ -88,11 +89,10 @@ const Button = {
 
             }, "Button"),
             m('div.diplay#this', { style: { background: 'white', display: 'none', padding: '1%'  } }, displayThis)
-
         ];
     }
-
 };
+
 
 m.mount(document.body, {
     view() {
