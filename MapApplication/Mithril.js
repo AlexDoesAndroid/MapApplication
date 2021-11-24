@@ -104,11 +104,13 @@ const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "
 const attractionForm = {
     view: function () {
         return m("form", [
-            m("label.label", "First name"),
-            m("input.input[type=text][placeholder=First name]"),
-            m("label.label", "Last name"),
-            m("input.input[placeholder=Last name]"),
-            m("button.button[type=button]", "Save"),
+            m("label.label", "Attraction:"),
+            m("input.input[type=text][placeholder=Attraction Name]"),
+            m("label.label", "General Directions:"),
+            m("input.input[type=text][placeholder='around the corner from door 1']"),
+            m("label.label", "Description:"),
+            m("textarea.input[rows=3][cols=35][placeholder='food or something']"),
+            m("button.button[type=submit]", "Submit"),
         ])
     }
 }
