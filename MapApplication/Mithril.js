@@ -100,17 +100,34 @@ const closeBtn = m("button#Close", { onclick: CloseClickListener }, "X");
 //this is the form button
 const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "Add Nearby Attraction");
 
+
+var options = {
+    view: function () {
+        return [
+            m("option.options[value=Johnson and Hardwick", "Johnson and Hardwick"),
+            m("option.options[value=SERC", "SERC"),
+        ]
+    }
+
+}
 //create a component that will display a form
 const attractionForm = {
     view: function () {
         return m("form", [
+            m("label.label", "Location:"),
+            m("select.input", options.view()),
+
             m("label.label", "Attraction:"),
             m("input.input[type=text][placeholder=Attraction Name]"),
+
             m("label.label", "General Directions:"),
             m("input.input[type=text][placeholder='around the corner from door 1']"),
+
             m("label.label", "Description:"),
             m("textarea.input[rows=3][cols=35][placeholder='food or something']"),
+
             m("button.button[type=submit]", "Submit"),
+            
         ])
     }
 }
