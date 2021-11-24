@@ -340,16 +340,17 @@ class Attractions {
     }
 }
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
-
-
 var AttractionClickListener = {
     handleEvent: function (e) {
         console.log(e)
-        var atrLocate = document.getElementById(AtractLoc).value;
-        var atrName = document.getElementById(AtracName).value;
-        var atrGenDirec = document.getElementById(AtracDirec).value;
-        var atrDescrip = document.getElementById(AtracDescrip).value;
+        e.preventDefault();
+        console.log("you got to the attraction click listener for objects")
+        var atrLocate = document.getElementById('AtractLoc').value;
+        var atrName = document.getElementById('AtracName').value;
+        var atrGenDirec = document.getElementById('AtracDirec').value;
+        var atrDescrip = document.getElementById('AtracDescrip').value;
         var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+        localStorage.setItem(atrName, obj);
     }
 }
 
