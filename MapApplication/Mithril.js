@@ -81,6 +81,7 @@ var CloseClickListener = {
         document.getElementById('SERCDiv').style.display = 'none';
         document.getElementById('PalyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
+        document.getElementById('JNHForm').style.display = 'none';
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
@@ -136,7 +137,7 @@ const JnHButton = {
 
             }, "Button"),
             m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, closeBtn, AddAttraction),
-            m('div.diplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view())
             //document.getElementById('#this').display = 'none'
             
         ];
