@@ -126,7 +126,7 @@ const attractionForm = {
             m("label.label", "Description:"),
             m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
 
-            m("button.button#attrFormSubmit[type=submit]", "Submit"),
+            m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
             
         ])
     }
@@ -310,12 +310,15 @@ class Attractions {
         this.attrName = attractName;
         this.attrDirections = genDirections;
         this.attrDescrip = descrip;
+        console.log("Constructor Initialized");
     }
+    
     get TheLocation() {
         return this.attrLocation
     }
     set TheLocation(value) {
         this.attrLocation = value;
+        
     }
     get AttractionName() {
         return this.attrName;
@@ -346,7 +349,7 @@ var AttractionClickListener = {
         var atrName = document.getElementById(AtracName).value;
         var atrGenDirec = document.getElementById(AtracDirec).value;
         var atrDescrip = document.getElementById(AtracDescrip).value;
-
+        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
     }
 }
 
