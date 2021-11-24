@@ -45,7 +45,7 @@ document.getElementById("#modal").onclick = m.withAttr(myOtherView());
 **/
 
 // some useful sample code on components 
-
+/*
 var appstate = null
 var appdata = ['left', 'middleLeft', 'middle', 'right']
 var ButtonComponent = {
@@ -70,6 +70,16 @@ var App = {
 }
 m.mount(document.body, App)
     */
+
+
+var CloseClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        //this is javascript that unhides the div
+        document.getElementById(e).style.display = 'none';
+        //here we should have a refrence to an array or an object to be put in the div
+    }
+}
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
@@ -97,6 +107,10 @@ var jnhClickListener = {
         //this is javascript that unhides the div
         document.getElementById('JnHbtn').style.display = 'inline-block';
         displayJnH = "This is J&H";
+        m("button#Close", {
+            onclick: CloseClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
+
+        }, "X");
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
