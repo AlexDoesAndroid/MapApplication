@@ -71,15 +71,56 @@ var App = {
 m.mount(document.body, App)
     */
 
-
+//this is an event listener that hides all the display divs
 var CloseClickListener = {
     handleEvent: function (e) {
-        console.log(e)
+        console.log(e);
         //this is javascript that unhides the div
-        document.getElementById(e).style.display = 'none';
+        document.getElementById('JnHbtn').style.display = 'none';
+        document.getElementById('StudentCenterbtn').style.display = 'none';
+        document.getElementById('SERCDiv').style.display = 'none';
+        document.getElementById('PalyDiv').style.display = 'none';
+        document.getElementById('PresserDiv').style.display = 'none';
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
+//this is an event listener that opens the form in a div
+var addAttractionClickListener = {
+    handleEvent: function (e) {
+        console.log(e);
+        //attractionForm;
+        formDiv;
+    }
+}
+
+//this is the close button
+const closeBtn = m("button#Close", { onclick: CloseClickListener }, "X");
+//this is the form button
+const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "Add Nearby Attraction");
+
+//create a component that will display a form
+const attractionForm = {
+    view: function () {
+        return m("form", [
+            m("label.label", "First name"),
+            m("input.input[type=text][placeholder=First name]"),
+            m("label.label", "Last name"),
+            m("input.input[placeholder=Last name]"),
+            m("button.button[type=button]", "Save"),
+        ])
+    }
+}
+//this create the form div
+var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm);
+
+
+
+
+
+
+
+
+
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
@@ -93,7 +134,7 @@ const JnHButton = {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH),
+            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, closeBtn, AddAttraction),
             //document.getElementById('#this').display = 'none'
             
         ];
@@ -107,10 +148,7 @@ var jnhClickListener = {
         //this is javascript that unhides the div
         document.getElementById('JnHbtn').style.display = 'inline-block';
         displayJnH = "This is J&H";
-        m("button#Close", {
-            onclick: CloseClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-        }, "X");
+        
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
@@ -124,7 +162,7 @@ const studentCenterButton = {
                 onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -150,7 +188,7 @@ const SERCButton = {
                 onclick: sercClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -174,7 +212,7 @@ const Paley = {
                 onclick: paleyClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -198,7 +236,7 @@ const Presser = {
                 onclick: presserClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS),
+            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
