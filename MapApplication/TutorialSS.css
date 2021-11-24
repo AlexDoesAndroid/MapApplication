@@ -36,3 +36,20 @@
     color: #f7f7f7;
     font-weight: bold;
 }
+p {
+    text-align: left;
+}
+
+img {
+    display: block;
+    width: 25%;
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 3px;
+    background-color: grey;
+    color: white;
+}
