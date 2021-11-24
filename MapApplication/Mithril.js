@@ -89,7 +89,8 @@ var addAttractionClickListener = {
     handleEvent: function (e) {
         console.log(e);
         //attractionForm;
-        formDiv;
+        document.getElementById('JNHForm').style.display = 'inline-block';
+        
     }
 }
 
@@ -111,7 +112,7 @@ const attractionForm = {
     }
 }
 //this create the form div
-var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm);
+var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
 
 
 
@@ -135,6 +136,7 @@ const JnHButton = {
 
             }, "Button"),
             m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, closeBtn, AddAttraction),
+            m('div.diplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
             //document.getElementById('#this').display = 'none'
             
         ];
