@@ -115,24 +115,24 @@ const attractionForm = {
     view: function () {
         return m("form", [
             m("label.label", "Location:"),
-            m("select.input", options.view()),
+            m("select.input#AtractLoc", options.view()),
 
             m("label.label", "Attraction:"),
-            m("input.input[type=text][placeholder=Attraction Name]"),
+            m("input.input#AtracName[type=text][placeholder=Attraction Name]"),
 
             m("label.label", "General Directions:"),
-            m("input.input[type=text][placeholder='around the corner from door 1']"),
+            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']"),
 
             m("label.label", "Description:"),
-            m("textarea.input[rows=3][cols=35][placeholder='food or something']"),
+            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
 
-            m("button.button[type=submit]", "Submit"),
+            m("button.button#attrFormSubmit[type=submit]", "Submit"),
             
         ])
     }
 }
 //this create the form div
-var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
+var formDiv = m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
 
 
 
@@ -156,7 +156,7 @@ const JnHButton = {
 
             }, "Button"),
             m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, closeBtn, AddAttraction),
-            m('div.diplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view())
+            m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view())
             //document.getElementById('#this').display = 'none'
             
         ];

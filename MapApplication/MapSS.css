@@ -87,3 +87,8 @@ body, html {
     left: 15%;
     border-radius: 0px 50px 30px 30px
 }
+
+.formDisplay{
+    text-align: center;
+    margin-left: 20%
+}
