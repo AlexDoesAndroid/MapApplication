@@ -11,6 +11,8 @@
 //    }); 
 //});
 
+const { buildPathname } = require("mithril");
+
 //comment the below out to get the map back
 ///*
 
@@ -339,6 +341,8 @@ class Attractions {
         this.attrDescrip = value;
     }
 }
+var attractionsArr = [];
+localStorage.setItem(BuildingAttractions, Attractions);
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
     handleEvent: function (e) {
@@ -354,6 +358,14 @@ var AttractionClickListener = {
     }
 }
 
+addToLocalArray = function (obj) {
+    var arr = localStorage.getItem(BuildingAttractions);
+    var parseArr = JSON.parse(arr);
+    localStorage.clear();
+    attractionsArr = parseArr;
+    attractionsArr.ushift(obj);
+    localStorage.setItem(BuildingAttractions, attractionsArr);
+}
 
 
 //create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
