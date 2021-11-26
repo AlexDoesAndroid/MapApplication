@@ -179,6 +179,7 @@ var jnhClickListener = {
         //this is javascript that unhides the div
         document.getElementById('JnHbtn').style.display = 'inline-block';
         displayJnH = "This is J&H";
+        oncreated();
         
         //here we should have a refrence to an array or an object to be put in the div
     }
@@ -286,31 +287,17 @@ var presserClickListener = {
     }
 }
 
-
-
-
-
-
-//this puts the button on the correct div on load
-m.mount(document.body, {
-    view() {
-        return [
-            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser), m(SortLists.view))
-            //m(SortLists, oncreate()),
-        ];
+oncreated = function() {
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    pulledFromStorage = parseArr;
+    for (var index = 0; index < pulledFromStorage.length; index++) {
+        var check = pulledFromStorage[index];
+        if (check == "Johnson and Hardwick") {
+            var newLI = m('li.lists', m('p', check[attrName]), m('p', check[atrGenDirec]), m('p', check[atrDescrip]));
+            m('ul.AttractionLists#JnHUL', newLI);
+        }
     }
-});
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -395,19 +382,9 @@ addToLocalArray = function (obj) {
 //this can be done with a really long if else statement to try and match the location then put it in a UL with a 
 //specific id
 var listelements = m("li.lists", 'a variable will go here');
-var pulledFromStorage = [];
+
 var SortLists = {
-    oncreate: function (vnode) {
-        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-        pulledFromStorage = parseArr;
-        for (var index = 0; index < pulledFromStorage.length; index++) {
-            var check = pulledFromStorage[index];
-            if (check == "Johnson and Hardwick") {
-                var newLI = m('li.lists', m('p', check[attrName]), m('p', check[atrGenDirec]), m('p', check[atrDescrip]));
-                m('JnHUL', newLI);
-            }
-        }
-    },
+
     onupdate: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
         pulledFromStorage = parseArr;
@@ -416,3 +393,15 @@ var SortLists = {
 
     },
 }
+
+var pulledFromStorage = [];
+
+//this puts the button on the correct div on load
+m.mount(document.body, {
+    view() {
+        return [
+            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser))
+            //m(SortLists, oncreate()),
+        ];
+    },
+});
