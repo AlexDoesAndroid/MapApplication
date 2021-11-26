@@ -148,7 +148,7 @@ var formDiv = m('div.formDisplay#JNHForm', { style: { background: 'white', displ
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
 //these add UL to the divs
-var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ");
+var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", );
 var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
 var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
 var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
@@ -294,7 +294,8 @@ var presserClickListener = {
 m.mount(document.body, {
     view() {
         return [
-            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser))
+            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser), m(SortLists.view))
+            //m(SortLists, oncreate()),
         ];
     }
 });
@@ -355,6 +356,8 @@ var attractionsArr = [];
 //this is a default object
 const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
 attractionsArr.unshift(HalalTruck1);
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Peabody Feild', "Outside the front dor to the left", 'Literally a feild');
+attractionsArr.unshift(JNHFeild);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
@@ -389,3 +392,25 @@ addToLocalArray = function (obj) {
 //alternativly write a method that creates <li> then puts them in the correct div
 //this can be done with a really long if else statement to try and match the location then put it in a UL with a 
 //specific id
+var listelements = m("li.lists", 'a variable will go here');
+var pulledFromStorage = [];
+var SortLists = {
+    oncreate: function (vnode) {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            var check = pulledFromStorage[index];
+            if (check == "Johnson and Hardwick") {
+                var newLI = m('li.lists', m('p', check[attrName]), m('p', check[atrGenDirec]), m('p', check[atrDescrip]));
+                m('JnHUL', newLI);
+            }
+        }
+    },
+    onupdate: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+    },
+    view: function () {
+
+    },
+}
