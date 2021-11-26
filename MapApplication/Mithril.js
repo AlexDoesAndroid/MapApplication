@@ -275,6 +275,7 @@ const Presser = {
         ];
     }
 };
+
 var presserClickListener = {
     handleEvent: function (e) {
         console.log(e)
@@ -371,6 +372,7 @@ var AttractionClickListener = {
         addToLocalArray(obj);
     }
 }
+
 
 addToLocalArray = function (obj) {
     var arr = localStorage.getItem('BuildingAttractions');
