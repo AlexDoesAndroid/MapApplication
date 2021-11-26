@@ -11,6 +11,8 @@
 //    }); 
 //});
 
+//const { buildPathname } = require("mithril");
+
 //comment the below out to get the map back
 ///*
 
@@ -81,6 +83,7 @@ var CloseClickListener = {
         document.getElementById('SERCDiv').style.display = 'none';
         document.getElementById('PalyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
+        document.getElementById('JNHForm').style.display = 'none';
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
@@ -99,20 +102,39 @@ const closeBtn = m("button#Close", { onclick: CloseClickListener }, "X");
 //this is the form button
 const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "Add Nearby Attraction");
 
+
+var options = {
+    view: function () {
+        return [
+            m("option.options[value=Johnson and Hardwick", "Johnson and Hardwick"),
+            m("option.options[value=SERC", "SERC"),
+        ]
+    }
+
+}
 //create a component that will display a form
 const attractionForm = {
     view: function () {
         return m("form", [
-            m("label.label", "First name"),
-            m("input.input[type=text][placeholder=First name]"),
-            m("label.label", "Last name"),
-            m("input.input[placeholder=Last name]"),
-            m("button.button[type=button]", "Save"),
+            m("label.label", "Location:"),
+            m("select.input#AtractLoc", options.view()),
+
+            m("label.label", "Attraction:"),
+            m("input.input#AtracName[type=text][placeholder=Attraction Name]"),
+
+            m("label.label", "General Directions:"),
+            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']"),
+
+            m("label.label", "Description:"),
+            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
+
+            m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
+            
         ])
     }
 }
 //this create the form div
-var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
+var formDiv = m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
 
 
 
@@ -125,6 +147,12 @@ var formDiv = m('div.diplay#JNHForm', { style: { background: 'white', display: '
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
+//these add UL to the divs
+var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ");
+var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
+var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
+var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
+var PresserList = m('ul.AttractionLists#PresserUL', "Nearby Attractions: ");
 
 //this is the JNH button, should always be the first button
 const JnHButton = {
@@ -135,8 +163,9 @@ const JnHButton = {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, closeBtn, AddAttraction),
-            m('div.diplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, JnHList, closeBtn, AddAttraction),
+            m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view())
+
             //document.getElementById('#this').display = 'none'
             
         ];
@@ -164,7 +193,8 @@ const studentCenterButton = {
                 onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
+            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, StudentCenterList, closeBtn),
+
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -190,7 +220,8 @@ const SERCButton = {
                 onclick: sercClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
+            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, SERCList, closeBtn),
+
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -214,7 +245,7 @@ const Paley = {
                 onclick: paleyClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
+            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, PaleyList, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -238,7 +269,7 @@ const Presser = {
                 onclick: presserClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, closeBtn),
+            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, PresserList, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -290,12 +321,15 @@ class Attractions {
         this.attrName = attractName;
         this.attrDirections = genDirections;
         this.attrDescrip = descrip;
+        console.log("Constructor Initialized");
     }
+    
     get TheLocation() {
         return this.attrLocation
     }
     set TheLocation(value) {
         this.attrLocation = value;
+        
     }
     get AttractionName() {
         return this.attrName;
@@ -316,23 +350,42 @@ class Attractions {
         this.attrDescrip = value;
     }
 }
+//this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
+var attractionsArr = [];
+//this is a default object
+const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
+attractionsArr.unshift(HalalTruck1);
+localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
-
-
 var AttractionClickListener = {
     handleEvent: function (e) {
         console.log(e)
-        var atrLocate = document.getElementById(AtractLoc).value;
-        var atrName = document.getElementById(AtracName).value;
-        var atrGenDirec = document.getElementById(AtracDirec).value;
-        var atrDescrip = document.getElementById(AtracDescrip).value;
-
+        e.preventDefault();
+        console.log("you got to the attraction click listener for objects")
+        var atrLocate = document.getElementById('AtractLoc').value;
+        var atrName = document.getElementById('AtracName').value;
+        var atrGenDirec = document.getElementById('AtracDirec').value;
+        var atrDescrip = document.getElementById('AtracDescrip').value;
+        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+        localStorage.setItem(atrName, JSON.stringify(obj));
+        addToLocalArray(obj);
     }
 }
 
+addToLocalArray = function (obj) {
+    var arr = localStorage.getItem('BuildingAttractions');
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    localStorage.clear();
+    attractionsArr = parseArr;
+    attractionsArr.unshift(obj);
+    localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+}
 
 
 //create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
 //a component
 
 
+//alternativly write a method that creates <li> then puts them in the correct div
+//this can be done with a really long if else statement to try and match the location then put it in a UL with a 
+//specific id
