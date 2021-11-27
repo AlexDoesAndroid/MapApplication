@@ -93,8 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="home.html" />
-    <Content Include="HomeSS.css" />
+    <Content Include="images\logo.png" />
     <Content Include="images\map.png" />
+    <Content Include="images\MithrilQuestion.png" />
     <Content Include="map.html" />
     <Content Include="MapSS.css" />
     <Content Include="Mithril.js" />
