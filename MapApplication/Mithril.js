@@ -276,7 +276,7 @@ const JnHButton = {
             }, "Button"),
             m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, JnHList, closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
-            m(SortLocalStorage),
+            SortLocalStorage(),
             //document.getElementById('#this').display = 'none'
             
         ]
@@ -406,11 +406,7 @@ var presserClickListener = {
 //this puts the button on the correct div on load
 m.mount(document.body, {
     view() {
-        return [
-            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser))
-            //m(SortLists, oncreate()),
-        ];
-        
+        return m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser));
     }
 });
 
