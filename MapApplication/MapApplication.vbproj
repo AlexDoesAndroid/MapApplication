@@ -98,6 +98,7 @@
     <Content Include="images\MithrilQuestion.png" />
     <Content Include="map.html" />
     <Content Include="MapSS.css" />
+    <Content Include="MapSS1.css" />
     <Content Include="Mithril.js" />
     <Content Include="The Forms.html" />
     <Content Include="tutorial.html" />

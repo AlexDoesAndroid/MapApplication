@@ -172,7 +172,7 @@ SortLocalStorage = function () {
         var check = pulledFromStorage[index];
         if (check["attrLocation"] == "Johnson and Hardwick") {
             var newLI = m('li.lists', m('p', check["attrName"]), m('p', check["atrGenDirec"]), m('p', check["atrDescrip"]));
-            m('JnHUL', newLI);
+            m('ul.AttractionLists#JnHUL', newLI);
             JnHArray.unshift(check);
         }
     }
@@ -245,7 +245,7 @@ const attractionForm = {
     }
 }
 //this create the form div
-var formDiv = m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'block', padding: '1%' } }, attractionForm.view());
+var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, attractionForm.view());
 
 
 
@@ -259,7 +259,7 @@ var formDiv = m('div.formDisplay#JNHForm', { style: { background: 'white', displ
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
 //these add UL to the divs
-var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", );
+var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", m('li.lists', JnHArray));
 var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
 var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
 var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
@@ -274,7 +274,7 @@ const JnHButton = {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, JnHList, closeBtn, AddAttraction),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, JnHList, closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
             SortLocalStorage(),
             //document.getElementById('#this').display = 'none'
@@ -305,7 +305,7 @@ const studentCenterButton = {
                 onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#StudentCenterbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, StudentCenterList, closeBtn),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, closeBtn),
 
             //document.getElementById('#this').display = 'none'
 
@@ -332,7 +332,7 @@ const SERCButton = {
                 onclick: sercClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#SERCDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, SERCList, closeBtn),
+            m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, SERCList, closeBtn),
 
             //document.getElementById('#this').display = 'none'
 
@@ -357,7 +357,7 @@ const Paley = {
                 onclick: paleyClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PalyDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, PaleyList, closeBtn),
+            m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PaleyList, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];
@@ -381,7 +381,7 @@ const Presser = {
                 onclick: presserClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#PresserDiv', { style: { background: 'white', display: 'none', padding: '1%' } }, displaySS, PresserList, closeBtn),
+            m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PresserList, closeBtn),
             //document.getElementById('#this').display = 'none'
 
         ];

@@ -8,41 +8,138 @@ body, html {
     margin: 0;
 }
 
-.bg {
-    background-image: url(images/map.png);
-    height: 150pc; /*image size */
-    width: 150pc;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%; /* here is where you adjust bg pic fill within the div*/
-    top: 0;
-    left: 0;
-    position: absolute;
-}
+
+    .bg {
+        border:solid 5pc gray;
+        background-image: url(images/map.png);
+        height: 159pc; /*image size */
+        width: 180pc;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 99% 99%; /* here is where you adjust bg pic fill within the div*/
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
 
 
-#JnH {
-    position: absolute;
-    z-index: 100;
-    width: 32pc; /* this where you change johnson and hardwick hitbox dimensions*/
-    
-    height: 35pc;
-    border: 2px thick solid black;
-    opacity: 0.2;
-}
+    #JnH {
+        position: absolute;
+        z-index: 100;
+        width: 38pc; /* this where you change johnson and hardwick hitbox dimensions*/
+        left: 1%;
+        height: 38pc;
+
+        border: 2px thick solid black;
+        opacity: 0.2;
+    }
 
 #JnHbtn {
     position: absolute;
     z-index: 100;
     width: 20%;
+    border-radius: 0px 50px 30px 30px;
     height: 10%;
-    border: 2px thick solid black;
+    border: 2pt thick solid black;
     top: 12%;
-    left: 15%;
-    border-radius: 0px 50px 30px 30px
+    left: 19%;
+    border-color: red;
+    background:gray;
 }
 
-.formDisplay{
-    text-align: center;
-    margin-left: 20%
+    .formDisplay {
+        text-align: center;
+        margin-left: 20%
+    }
+
+#StudentCenter {
+    position: absolute;
+    z-index: 100;
+    width: 38pc; /* this where you change johnson and hardwick hitbox dimensions*/
+    left: 41%;
+    top:75%;
+    height: 20pc;
+    border: 2px thick solid black;
+    opacity: 0.2;
+}
+#StudentCenterbtn {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    border-radius: 30px 50px 0px 30px;
+    height: 10%;
+    border: 2pt thick solid black;
+    top: 65%;
+    left: 23%;
+    border-color: red;
+    background: gray;
+}
+
+#SERC {
+    position: absolute;
+    z-index: 100;
+    width: 25pc; /* this where you change johnson and hardwick hitbox dimensions*/
+    left: 71%;
+    top: 35%;
+    height: 20pc;
+    border: 2px thick solid black;
+    opacity: 0.2;
+}
+
+#SERCDiv {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    border-radius: 30px 0px 30px 30px;
+    height: 10%;
+    border: 2pt thick solid black;
+    top: 35%;
+    left: 51%;
+    border-color: red;
+    background: gray;
+}
+#PalyHall {
+    position: absolute;
+    z-index: 100;
+    width: 42pc; /* this where you change johnson and hardwick hitbox dimensions*/
+    left: 41%;
+    top: 52%;
+    height: 13pc;
+    border: 2px thick solid black;
+    opacity: 0.2;
+}
+#PalyDiv {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    border-radius: 30px 0px 30px 30px;
+    height: 10%;
+    border: 2pt thick solid black;
+    top: 45%;
+    left: 51%;
+    border-color: red;
+    background: gray;
+}
+
+#PresserHall {
+    position: absolute;
+    z-index: 100;
+    width: 20pc; /* this where you change johnson and hardwick hitbox dimensions*/
+    left: 41%;
+    top: 15%;
+    height: 13pc;
+    border: 2px thick solid black;
+    opacity: 0.2;
+}
+#PresserDiv {
+    position: absolute;
+    z-index: 100;
+    width: 20%;
+    border-radius: 30px 0px 30px 30px;
+    height: 10%;
+    border: 2pt thick solid black;
+    top: 22%;
+    left: 51%;
+    border-color: red;
+    background: gray;
 }
