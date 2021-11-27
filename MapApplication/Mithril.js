@@ -165,21 +165,37 @@ var pulledFromStorage = [];
 }
 */
 var JnHArray = [];
+//this is my attempt at writing  a component that creates a list element
+var JnHArrComponent = {
+    view: function (a) {
+        return m('li.lists', m('p', a.attractName), m('p', a.attrDirections), m('p', a.attrDescrip));
+    }
+}
+//this is a function that selects an object based on the location name and puts it in the JnH array
 SortLocalStorage = function () {
     var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
     pulledFromStorage = parseArr;
+    //for loop for getting index
     for (var index = 0; index < pulledFromStorage.length; index++) {
         var check = pulledFromStorage[index];
+        //if block to get the location
         if (check["attrLocation"] == "Johnson and Hardwick") {
-            var newLI = m('li.lists', m('p', check["attrName"]), m('p', check["atrGenDirec"]), m('p', check["atrDescrip"]));
-            m('ul.AttractionLists#JnHUL', newLI);
+            //attempts to mount the array in a list element through the component
+            m.mount('li.lists', JnHArrComponent.view(JnHArray));
+            //m('JnHUL', newLI);
+            //adds the index to the new array at the first position
             JnHArray.unshift(check);
         }
     }
     console.log("finished sorting");
     console.log(JnHArray);
 }
-
+//this is a function that trys to create a dom element. this could maybe be used after selecting an array index
+function createDomElements(nearbyAttractions) {
+    return nearbyAttractions.map(function (a) {
+        return m('li.lists', m('p', a.attrName), m('p', a.attrDirections), m('p', a.attrDescrip));
+    })
+}
 
 
 
@@ -189,12 +205,15 @@ var CloseClickListener = {
     handleEvent: function (e) {
         console.log(e);
         //this is javascript that unhides the div
+        
         document.getElementById('JnHbtn').style.display = 'none';
         document.getElementById('StudentCenterbtn').style.display = 'none';
         document.getElementById('SERCDiv').style.display = 'none';
         document.getElementById('PalyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
         document.getElementById('JNHForm').style.display = 'none';
+        
+        console.log("The divs are closed");
         //here we should have a refrence to an array or an object to be put in the div
     }
 }
@@ -209,11 +228,11 @@ var addAttractionClickListener = {
 }
 
 //this is the close button
-const closeBtn = m("button#Close", { onclick: CloseClickListener }, "X");
+const closeBtn = m("button.Close", { onclick: CloseClickListener }, "X");
 //this is the form button
 const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "Add Nearby Attraction");
 
-
+//these are options for the form
 var options = {
     view: function () {
         return [
@@ -277,6 +296,7 @@ const JnHButton = {
             m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, JnHList, closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
             SortLocalStorage(),
+            //m.render(document.getElementById('JnHUL'), createDomElements(JnHArray)),
             //document.getElementById('#this').display = 'none'
             
         ]
