@@ -172,6 +172,10 @@ var JnHArrComponent = {
     }
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
+var ObjName = "Default";
+var objDesc = "Default";
+var objdirec = "Default";
+var listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
 SortLocalStorage = function () {
     var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
     pulledFromStorage = parseArr;
@@ -181,7 +185,13 @@ SortLocalStorage = function () {
         //if block to get the location
         if (check["attrLocation"] == "Johnson and Hardwick") {
             //attempts to mount the array in a list element through the component
-            m.mount('li.lists', JnHArrComponent.view(JnHArray));
+            //m.render('li.lists', createDomElements(JnHArray));
+            ObjName = check["attrName"];
+            objDesc = check["attrDescrip"];
+            objdirec = check["attrDirections"];
+            //ObjName.toString();
+            //objDesc.toString();
+            //objdirec.toString();
             //m('JnHUL', newLI);
             //adds the index to the new array at the first position
             JnHArray.unshift(check);
@@ -278,7 +288,7 @@ var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', dis
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
 //these add UL to the divs
-var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", m('li.lists', JnHArray));
+var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", listItems);
 var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
 var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
 var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
@@ -293,9 +303,10 @@ const JnHButton = {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
+            SortLocalStorage(),
             m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, JnHList, closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
-            SortLocalStorage(),
+            
             //m.render(document.getElementById('JnHUL'), createDomElements(JnHArray)),
             //document.getElementById('#this').display = 'none'
             
