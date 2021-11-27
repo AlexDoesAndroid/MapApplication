@@ -73,6 +73,117 @@ var App = {
 m.mount(document.body, App)
     */
 
+class Attractions {
+    constructor(location, attractName, genDirections, descrip) {
+        this.attrLocation = location;
+        this.attrName = attractName;
+        this.attrDirections = genDirections;
+        this.attrDescrip = descrip;
+        console.log("Constructor Initialized");
+    }
+
+    get TheLocation() {
+        return this.attrLocation
+    }
+    set TheLocation(value) {
+        this.attrLocation = value;
+
+    }
+    get AttractionName() {
+        return this.attrName;
+    }
+    set AttractionName(value) {
+        this.attrName = value
+    }
+    get AtrractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
+    get AttractionDescription() {
+        return this.attrDescrip;
+    }
+    set AttractionDescription(value) {
+        this.attrDescrip = value;
+    }
+}
+//this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
+var attractionsArr = [];
+//this is a default object
+const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
+attractionsArr.unshift(HalalTruck1);
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Peabody Feild', "Outside the front dor to the left", 'Literally a feild');
+attractionsArr.unshift(JNHFeild);
+localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+//create a method that takes the form inputs and runs it through the class, also adding it to local storage
+var AttractionClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        e.preventDefault();
+        console.log("you got to the attraction click listener for objects")
+        var atrLocate = document.getElementById('AtractLoc').value;
+        var atrName = document.getElementById('AtracName').value;
+        var atrGenDirec = document.getElementById('AtracDirec').value;
+        var atrDescrip = document.getElementById('AtracDescrip').value;
+        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+        localStorage.setItem(atrName, JSON.stringify(obj));
+        addToLocalArray(obj);
+    }
+}
+
+
+addToLocalArray = function (obj) {
+    var arr = localStorage.getItem('BuildingAttractions');
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    localStorage.clear();
+    attractionsArr = parseArr;
+    attractionsArr.unshift(obj);
+    localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+}
+
+
+//create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
+//a component
+
+
+//alternativly write a method that creates <li> then puts them in the correct div
+//this can be done with a really long if else statement to try and match the location then put it in a UL with a 
+//specific id
+var listelements = m("li.lists", 'a variable will go here');
+var pulledFromStorage = [];
+/*
+ var SortLists = {
+
+    onupdate: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+    },
+    view: function () {
+
+    },
+}
+*/
+var JnHArray = [];
+SortLocalStorage = function () {
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    pulledFromStorage = parseArr;
+    for (var index = 0; index < pulledFromStorage.length; index++) {
+        var check = pulledFromStorage[index];
+        if (check["attrLocation"] == "Johnson and Hardwick") {
+            var newLI = m('li.lists', m('p', check["attrName"]), m('p', check["atrGenDirec"]), m('p', check["atrDescrip"]));
+            m('JnHUL', newLI);
+            JnHArray.unshift(check);
+        }
+    }
+    console.log("finished sorting");
+    console.log(JnHArray);
+}
+
+
+
+
+
 //this is an event listener that hides all the display divs
 var CloseClickListener = {
     handleEvent: function (e) {
@@ -164,11 +275,12 @@ const JnHButton = {
 
             }, "Button"),
             m('div.diplay#JnHbtn', { style: { background: 'white', display: 'none', padding: '1%' } }, displayJnH, JnHList, closeBtn, AddAttraction),
-            m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view())
-
+            m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m(SortLocalStorage),
             //document.getElementById('#this').display = 'none'
             
-        ];
+        ]
+        
     }
 
 };
@@ -295,9 +407,10 @@ var presserClickListener = {
 m.mount(document.body, {
     view() {
         return [
-            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser), m(SortLists.view))
+            m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser))
             //m(SortLists, oncreate()),
         ];
+        
     }
 });
 
@@ -317,102 +430,3 @@ m.mount(document.body, {
 
 
 
-class Attractions {
-    constructor(location, attractName, genDirections, descrip) {
-        this.attrLocation = location;
-        this.attrName = attractName;
-        this.attrDirections = genDirections;
-        this.attrDescrip = descrip;
-        console.log("Constructor Initialized");
-    }
-    
-    get TheLocation() {
-        return this.attrLocation
-    }
-    set TheLocation(value) {
-        this.attrLocation = value;
-        
-    }
-    get AttractionName() {
-        return this.attrName;
-    }
-    set AttractionName(value) {
-        this.attrName = value
-    }
-    get AtrractionDescription() {
-        return this.attrDescrip;
-    }
-    set AttractionDescription(value) {
-        this.attrDescrip = value;
-    }
-    get AttractionDescription() {
-        return this.attrDescrip;
-    }
-    set AttractionDescription(value) {
-        this.attrDescrip = value;
-    }
-}
-//this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
-var attractionsArr = [];
-//this is a default object
-const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
-attractionsArr.unshift(HalalTruck1);
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Peabody Feild', "Outside the front dor to the left", 'Literally a feild');
-attractionsArr.unshift(JNHFeild);
-localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
-//create a method that takes the form inputs and runs it through the class, also adding it to local storage
-var AttractionClickListener = {
-    handleEvent: function (e) {
-        console.log(e)
-        e.preventDefault();
-        console.log("you got to the attraction click listener for objects")
-        var atrLocate = document.getElementById('AtractLoc').value;
-        var atrName = document.getElementById('AtracName').value;
-        var atrGenDirec = document.getElementById('AtracDirec').value;
-        var atrDescrip = document.getElementById('AtracDescrip').value;
-        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
-        localStorage.setItem(atrName, JSON.stringify(obj));
-        addToLocalArray(obj);
-    }
-}
-
-
-addToLocalArray = function (obj) {
-    var arr = localStorage.getItem('BuildingAttractions');
-    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-    localStorage.clear();
-    attractionsArr = parseArr;
-    attractionsArr.unshift(obj);
-    localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
-}
-
-
-//create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
-//a component
-
-
-//alternativly write a method that creates <li> then puts them in the correct div
-//this can be done with a really long if else statement to try and match the location then put it in a UL with a 
-//specific id
-var listelements = m("li.lists", 'a variable will go here');
-var pulledFromStorage = [];
-var SortLists = {
-    oncreate: function (vnode) {
-        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-        pulledFromStorage = parseArr;
-        for (var index = 0; index < pulledFromStorage.length; index++) {
-            var check = pulledFromStorage[index];
-            if (check == "Johnson and Hardwick") {
-                var newLI = m('li.lists', m('p', check[attrName]), m('p', check[atrGenDirec]), m('p', check[atrDescrip]));
-                m('JnHUL', newLI);
-            }
-        }
-    },
-    onupdate: function () {
-        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-        pulledFromStorage = parseArr;
-    },
-    view: function () {
-
-    },
-}
