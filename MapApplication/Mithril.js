@@ -113,7 +113,7 @@ var attractionsArr = [];
 //this is a default object
 const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
 attractionsArr.unshift(HalalTruck1);
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Peabody Feild', "Outside the front dor to the left", 'Literally a feild');
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
 attractionsArr.unshift(JNHFeild);
 const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
 attractionsArr.unshift(JNHTest);
