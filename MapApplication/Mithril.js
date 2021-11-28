@@ -74,11 +74,12 @@ m.mount(document.body, App)
     */
 
 class Attractions {
-    constructor(location, attractName, genDirections, descrip) {
+    constructor(location, attractName, genDirections, descrip, id) {
         this.attrLocation = location;
         this.attrName = attractName;
         this.attrDirections = genDirections;
         this.attrDescrip = descrip;
+        this.id = id;
         console.log("Constructor Initialized");
     }
 
@@ -107,15 +108,21 @@ class Attractions {
     set AttractionDescription(value) {
         this.attrDescrip = value;
     }
+    get AttractionID() {
+        return this.ID;
+    }
+    set AttractionID(value) {
+        this.id = value;
+    }
 }
 //this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
 var attractionsArr = [];
 //this is a default object
-const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch');
+const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch', 1);
 attractionsArr.unshift(HalalTruck1);
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.', 2);
 attractionsArr.unshift(JNHFeild);
-const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
+const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object', 3);
 attractionsArr.unshift(JNHTest);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
@@ -169,8 +176,20 @@ var pulledFromStorage = [];
 var JnHArray = [];
 //this is my attempt at writing  a component that creates a list element
 var JnHArrComponent = {
-    view: function (a) {
-        return m('li.lists', m('p', a.attractName), m('p', a.attrDirections), m('p', a.attrDescrip));
+    JnHArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+//this is a component with fucntions to be enacted o the above component
+const actions = {
+    addToJnH: function () {
+        JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
+        attrLocation: ""
+        attrName: ""
+        attrDirections: ""
+        attrDescrip: ""
     }
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
@@ -202,7 +221,7 @@ SortLocalStorage = function () {
             //m('JnHUL', newLI);
             //adds the index to the new array at the first position
             JnHArray.unshift(check);
-            
+            actions.addToJnH();
         }
         console.log(ObjName);
         console.log(objDesc);
@@ -213,7 +232,9 @@ SortLocalStorage = function () {
     console.log(JnHArray);
     //createListRefs();
 }
-var listItems = userList(pulledFromStorage);
+//this var acn be refrenced in the dom elements
+var listItems = userList(JnHArray);
+//this is a components that handles the arrays
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
@@ -256,14 +277,12 @@ createListRefs = {
     }
  
 }
-var people = [
-    { id: 1, name: "John" },
-    { id: 2, name: "Mary" },
-]
 
+
+//this should be printing all the JnH objects
 function userList(users) {
-    return users.map(function (u) {
-        return m("li", u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
+    return JnHArray.map(function (u) {
+       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
 }
@@ -358,7 +377,7 @@ var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', dis
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
 //these add UL to the divs
-var JnHList = m('ul.AttractionLists#JnHUL', "Nearby Attractions: ", listItems);
+var JnHList = m.render(m('ul.AttractionLists#JnHUL', "Nearby Attractions: "), userList(JnHArray));
 var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
 var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
 var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
