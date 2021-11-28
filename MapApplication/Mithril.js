@@ -115,6 +115,8 @@ const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside 
 attractionsArr.unshift(HalalTruck1);
 const JNHFeild = new Attractions('Johnson and Hardwick', 'Peabody Feild', "Outside the front dor to the left", 'Literally a feild');
 attractionsArr.unshift(JNHFeild);
+const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
+attractionsArr.unshift(JNHTest);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
@@ -173,7 +175,7 @@ var JnHArrComponent = {
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
 
-var listItems;// = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+//var listItems;// = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
 SortLocalStorage = function () {
     var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
     pulledFromStorage = parseArr;
@@ -211,7 +213,7 @@ SortLocalStorage = function () {
     console.log(JnHArray);
     //createListRefs();
 }
-
+var listItems;
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
@@ -220,7 +222,9 @@ createListRefs = {
         var ObjName;// = "Default";
         var objDesc;// = "Default";
         var objdirec;// = "Default";
+
         for (var index = 0; index < pulledFromStorage.length; index++) {
+
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
@@ -244,12 +248,26 @@ createListRefs = {
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-
+            return listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
         }
-        return listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+        
     }
  
 }
+var people = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Mary" },
+]
+
+function userList(users) {
+    return users.map(function (u) {
+        return m("li", u.name) // <button>John</button>
+        // <button>Mary</button>
+    })
+}
+
+m.render(document.body, userList(people))
+
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {
     return nearbyAttractions.map(function (a) {
