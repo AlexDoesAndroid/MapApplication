@@ -194,7 +194,8 @@ const actions = {
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
 
-//var listItems;// = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+
+
 SortLocalStorage = function () {
     var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
     pulledFromStorage = parseArr;
@@ -233,8 +234,27 @@ SortLocalStorage = function () {
     //createListRefs();
 }
 //this var acn be refrenced in the dom elements
-var listItems = userList(JnHArray);
+
+
+
+//var listItems = userList(JnHArray);
+
+//console.log(listItems);
+//var listItems = JnHArray.forEach(element => { element.attrName });
+
+
+//JnHArray.forEach(JnH => {
+//    for (let key in JnH) {
+//        console.log(`${key}: ${JnH[key]}`);
+//    }
+//});
+
+//Object.values(JnHArray).forEach(attrName => {
+//    console.log(attrName);
+//});
+
 //this is a components that handles the arrays
+
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
@@ -243,6 +263,7 @@ createListRefs = {
         var ObjName;// = "Default";
         var objDesc;// = "Default";
         var objdirec;// = "Default";
+        var listItem;
 
         for (var index = 0; index < pulledFromStorage.length; index++) {
 
@@ -257,7 +278,7 @@ createListRefs = {
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-                console.log(listItems);
+                //console.log(listItems);
 
                 console.log(objdirec);
                 //ObjName.toString();
@@ -266,17 +287,19 @@ createListRefs = {
                 //m('JnHUL', newLI);
                 //adds the index to the new array at the first position
                 JnHArray.unshift(check);
-                return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
-                
 
+                listItem = JnHArray[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+                listItem2 = JnHArray[1] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+                listItem3 = JnHArray[2] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+
+                var test
+                test = listItem + listItem2 + listItem3
+                console.log(listItem)
+                return listItem
             }
 
-            console.log(ObjName);
-            console.log(objDesc);
-            console.log(objdirec);
-
         }
-        console.log(listItems);
+        //console.log(listItems);
         
     }
  
@@ -287,7 +310,7 @@ createListRefs = {
 function userList(users) {
     return JnHArrComponent.JnHArrayComp.map(function (u) {
 
-       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
+        return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
 }
