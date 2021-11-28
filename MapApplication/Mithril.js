@@ -172,33 +172,83 @@ var JnHArrComponent = {
     }
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
-var ObjName = "Default";
-var objDesc = "Default";
-var objdirec = "Default";
-var listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+
+var listItems;// = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
 SortLocalStorage = function () {
     var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
     pulledFromStorage = parseArr;
     //for loop for getting index
+    var ObjName;// = "Default";
+    var objDesc;// = "Default";
+    var objdirec;// = "Default";
     for (var index = 0; index < pulledFromStorage.length; index++) {
         var check = pulledFromStorage[index];
+        console.log("entered loop");
         //if block to get the location
         if (check["attrLocation"] == "Johnson and Hardwick") {
             //attempts to mount the array in a list element through the component
             //m.render('li.lists', createDomElements(JnHArray));
             ObjName = check["attrName"];
+            console.log(ObjName);
             objDesc = check["attrDescrip"];
+            console.log(objDesc);
             objdirec = check["attrDirections"];
+            console.log(objdirec);
             //ObjName.toString();
             //objDesc.toString();
             //objdirec.toString();
             //m('JnHUL', newLI);
             //adds the index to the new array at the first position
             JnHArray.unshift(check);
+            
         }
+        console.log(ObjName);
+        console.log(objDesc);
+        console.log(objdirec);
+        listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
     }
     console.log("finished sorting");
     console.log(JnHArray);
+    //createListRefs();
+}
+
+createListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        //for loop for getting index
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+            //if block to get the location
+            if (check["attrLocation"] == "Johnson and Hardwick") {
+                //attempts to mount the array in a list element through the component
+                //m.render('li.lists', createDomElements(JnHArray));
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+                console.log(objdirec);
+                //ObjName.toString();
+                //objDesc.toString();
+                //objdirec.toString();
+                //m('JnHUL', newLI);
+                //adds the index to the new array at the first position
+                JnHArray.unshift(check);
+
+            }
+            console.log(ObjName);
+            console.log(objDesc);
+            console.log(objdirec);
+
+        }
+        return listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+    }
+ 
 }
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {
@@ -299,12 +349,13 @@ const JnHButton = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
+            SortLocalStorage(),
             m("button#JnH", {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            SortLocalStorage(),
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, JnHList, closeBtn, AddAttraction),
+            
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
             
             //m.render(document.getElementById('JnHUL'), createDomElements(JnHArray)),
