@@ -206,6 +206,7 @@ SortLocalStorage = function () {
     for (var index = 0; index < pulledFromStorage.length; index++) {
         var check = pulledFromStorage[index];
         console.log("entered loop");
+        console.log(pulledFromStorage.length)
         //if block to get the location
         if (check["attrLocation"] == "Johnson and Hardwick") {
             //attempts to mount the array in a list element through the component
@@ -234,25 +235,9 @@ SortLocalStorage = function () {
     //createListRefs();
 }
 //this var acn be refrenced in the dom elements
-
-
-
-//var listItems = userList(JnHArray);
-
-//console.log(listItems);
-//var listItems = JnHArray.forEach(element => { element.attrName });
-
-
-//JnHArray.forEach(JnH => {
-//    for (let key in JnH) {
-//        console.log(`${key}: ${JnH[key]}`);
-//    }
-//});
-
-//Object.values(JnHArray).forEach(attrName => {
-//    console.log(attrName);
-//});
-
+console.log(JnHArray);
+var listItems = JnHArray.forEach(element => { element.attrName});
+console.log(listItems);
 //this is a components that handles the arrays
 
 createListRefs = {
@@ -285,12 +270,38 @@ createListRefs = {
                 //objDesc.toString();
                 //objdirec.toString();
                 //m('JnHUL', newLI);
+            };
+
                 //adds the index to the new array at the first position
                 JnHArray.unshift(check);
+            listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+            displayNode(listItems);
 
-                listItem = JnHArray[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
-                listItem2 = JnHArray[1] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
-                listItem3 = JnHArray[2] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+            function displayNode(arr) {
+                console.log(arr);
+                m('li.lists#' + index, m('p', arr[index].attrName), m('p', arr[index].attrDirections), m('p', arr[index].attrDescrip));
+
+            }
+            console.log(displayNode);
+            if (check["attrLocation"] == "Johnson and Hardwick") {
+                //attempts to mount the array in a list element through the component
+                //m.render('li.lists', createDomElements(JnHArray));
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+                console.log(listItems);
+
+                console.log(objdirec);
+                //ObjName.toString();
+                //objDesc.toString();
+                //objdirec.toString();
+                //m('JnHUL', newLI);
+                //adds the index to the new array at the first position
+                JnHArray.unshift(check);
+                return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+
 
                 var test
                 test = listItem + listItem2 + listItem3
@@ -307,10 +318,9 @@ createListRefs = {
 
 
 //this should be printing all the JnH objects
-function userList(users) {
+function userList() {
     return JnHArrComponent.JnHArrayComp.map(function (u) {
-
-        return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
+       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
 }
