@@ -328,7 +328,7 @@ var CloseClickListener = {
         document.getElementById('JnHbtn').style.display = 'none';
         document.getElementById('StudentCenterbtn').style.display = 'none';
         document.getElementById('SERCDiv').style.display = 'none';
-        document.getElementById('PalyDiv').style.display = 'none';
+        document.getElementById('PaleyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
         document.getElementById('JNHForm').style.display = 'none';
         
@@ -357,6 +357,9 @@ var options = {
         return [
             m("option.options[value=Johnson and Hardwick", "Johnson and Hardwick"),
             m("option.options[value=SERC", "SERC"),
+            m("option.options[value=Student Center]", "Student Center"),
+            m("option.options[value=Paley Hall]", "Paley Hall"),
+            m("option.options[value = Presser Hall]", "Presser Hall"),
         ]
     }
 
