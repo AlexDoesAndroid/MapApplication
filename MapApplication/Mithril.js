@@ -257,6 +257,8 @@ createListRefs = {
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
+                console.log(listItems);
+
                 console.log(objdirec);
                 //ObjName.toString();
                 //objDesc.toString();
@@ -264,12 +266,14 @@ createListRefs = {
                 //m('JnHUL', newLI);
                 //adds the index to the new array at the first position
                 JnHArray.unshift(check);
+                return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+                
 
             }
+
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-            return listItems = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"])) ;
 
         }
         console.log(listItems);
@@ -282,6 +286,7 @@ createListRefs = {
 //this should be printing all the JnH objects
 function userList(users) {
     return JnHArrComponent.JnHArrayComp.map(function (u) {
+
        return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
