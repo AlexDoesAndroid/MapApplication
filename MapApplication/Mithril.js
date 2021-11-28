@@ -226,7 +226,7 @@ SortLocalStorage = function () {
         console.log(ObjName);
         console.log(objDesc);
         console.log(objdirec);
-        listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+
     }
     console.log("finished sorting");
     console.log(JnHArray);
