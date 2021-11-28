@@ -124,6 +124,7 @@ const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Pe
 attractionsArr.unshift(JNHFeild);
 const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object', 3);
 attractionsArr.unshift(JNHTest);
+console.log(attractionsArr);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
@@ -202,10 +203,12 @@ SortLocalStorage = function () {
     var ObjName;// = "Default";
     var objDesc;// = "Default";
     var objdirec;// = "Default";
+    var check = pulledFromStorage;
+    console.log(pulledFromStorage);
     for (var index = 0; index < pulledFromStorage.length; index++) {
-        var check = pulledFromStorage[index];
+        check = pulledFromStorage[index];
         console.log("entered loop");
-        console.log(pulledFromStorage.length)
+        console.log(pulledFromStorage.length);
         //if block to get the location
         if (check["attrLocation"] == "Johnson and Hardwick") {
             //attempts to mount the array in a list element through the component
@@ -246,12 +249,16 @@ createListRefs = {
         var ObjName;// = "Default";
         var objDesc;// = "Default";
         var objdirec;// = "Default";
-
+        var listItem=[];
+        var check = pulledFromStorage;
+        var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
-
+            count++;
+            
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
+
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
                 //m.render('li.lists', createDomElements(JnHArray));
@@ -260,35 +267,7 @@ createListRefs = {
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-                console.log(listItems);
-
-                console.log(objdirec);
-                //ObjName.toString();
-                //objDesc.toString();
-                //objdirec.toString();
-                //m('JnHUL', newLI);
-            };
-
-                //adds the index to the new array at the first position
-              //  JnHArray.unshift(check);
-           // listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
-            //displayNode(listItems);
-
-            function displayNode(arr) {
-                console.log(arr);
-                m('li.lists#' + index, m('p', arr[index].attrName), m('p', arr[index].attrDirections), m('p', arr[index].attrDescrip));
-
-            }
-            console.log(displayNode);
-            if (check["attrLocation"] == "Johnson and Hardwick") {
-                //attempts to mount the array in a list element through the component
-                //m.render('li.lists', createDomElements(JnHArray));
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-                console.log(listItems);
+                
 
                 console.log(objdirec);
                 //ObjName.toString();
@@ -299,23 +278,20 @@ createListRefs = {
                 JnHArray.unshift(check);
                 //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
 
-                listItem = JnHArray[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
-                listItem2 = JnHArray[1] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
-                listItem3 = JnHArray[2] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
-
-                var test
-                test = listItem + listItem2 + listItem3
-                console.log(listItem)
-                return listItem
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+                
+                
+                
             }
-
+            console.log(listItem)
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-
+            
         }
+        console.log(count);
         console.log(listItems);
-        
+        return listItem
     }
  
 }
