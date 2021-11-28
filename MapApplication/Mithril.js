@@ -116,7 +116,7 @@ attractionsArr.unshift(HalalTruck1);
 const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
 attractionsArr.unshift(JNHFeild);
 const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
-attractionsArr.unshift(JNHTest);
+//attractionsArr.unshift(JNHTest);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
@@ -202,18 +202,18 @@ SortLocalStorage = function () {
             //m('JnHUL', newLI);
             //adds the index to the new array at the first position
             JnHArray.unshift(check);
-            
+
         }
         console.log(ObjName);
         console.log(objDesc);
         console.log(objdirec);
-        listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+
     }
     console.log("finished sorting");
     console.log(JnHArray);
     //createListRefs();
 }
-var listItems;
+var listItems = [];
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
@@ -248,9 +248,9 @@ createListRefs = {
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-            return listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+            listItems.unshift.JSON.stringify(m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc)));
         }
-        
+        return JSON.parse(listItems);
     }
  
 }
