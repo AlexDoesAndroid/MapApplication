@@ -96,6 +96,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\map.png" />
     <Content Include="images\MithrilQuestion.png" />
+    <Content Include="images\performance.PNG" />
     <Content Include="map.html" />
     <Content Include="MapSS.css" />
     <Content Include="MapSS1.css" />
