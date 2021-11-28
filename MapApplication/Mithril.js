@@ -270,9 +270,9 @@ createListRefs = {
             };
 
                 //adds the index to the new array at the first position
-                JnHArray.unshift(check);
-            listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
-            displayNode(listItems);
+              //  JnHArray.unshift(check);
+           // listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+            //displayNode(listItems);
 
             function displayNode(arr) {
                 console.log(arr);
@@ -297,9 +297,16 @@ createListRefs = {
                 //m('JnHUL', newLI);
                 //adds the index to the new array at the first position
                 JnHArray.unshift(check);
-                return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
 
+                listItem = JnHArray[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+                listItem2 = JnHArray[1] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
+                listItem3 = JnHArray[2] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]))
 
+                var test
+                test = listItem + listItem2 + listItem3
+                console.log(listItem)
+                return listItem
             }
 
             console.log(ObjName);
