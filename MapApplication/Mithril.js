@@ -281,7 +281,7 @@ createListRefs = {
 
 //this should be printing all the JnH objects
 function userList(users) {
-    return JnHArray.map(function (u) {
+    return JnHArrComponent.JnHArrayComp.map(function (u) {
        return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
