@@ -213,7 +213,7 @@ SortLocalStorage = function () {
     console.log(JnHArray);
     //createListRefs();
 }
-var listItems;
+var listItems = userList(pulledFromStorage);
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
@@ -248,8 +248,10 @@ createListRefs = {
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-            return listItems = m('li.lists#' + ObjName, m('p', ObjName), m('p', objdirec), m('p', objDesc));
+            return listItems = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"])) ;
+
         }
+        console.log(listItems);
         
     }
  
@@ -261,12 +263,12 @@ var people = [
 
 function userList(users) {
     return users.map(function (u) {
-        return m("li", u.name) // <button>John</button>
+        return m("li", u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
         // <button>Mary</button>
     })
 }
 
-m.render(document.body, userList(people))
+//m.render(document.getElementById('JnHUL'), userList(JnHArray))
 
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {
