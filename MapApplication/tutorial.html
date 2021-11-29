@@ -183,29 +183,20 @@ addToLocalArray = function (obj) {
 
 	&nbsp;
 	<p>
-		A component that creates a list element, a component with fucntions to be enacted in the above component and a function that selects an object based on the location name and puts it in the JnH array:
+		A component with fucntions to be enacted in the above component and a function that selects an object based on the location name and puts it in the Student Center array:
 	</p>
 
 	<pre class="sampleCode">
-	var JnHArray = [];
+	var StudentCenterArray = [];
 
-	var JnHArrComponent = {
-	 JnHArrayComp: [],
+	var Student CenterArrComponent = {
+	 Student CenterArrayComp: [],
 	 attrLocation: "",
 	 attrName: "",
 	 attrDirections: "",
 	 attrDescrip: ""
 }
 
-const actions = {
-    addToJnH: function () {
-        JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
-        attrLocation: ""
-        attrName: ""
-        attrDirections: ""
-        attrDescrip: ""
-    }
-}
 </pre>
 
 	&nbsp;
@@ -242,7 +233,7 @@ createListRefs = {
                 objDesc = check["attrDescrip"];
                 objdirec = check["attrDirections"];
 
-                JnHArray.unshift(check);
+                StudentCenterArray.unshift(check);
 
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
             }  
@@ -266,8 +257,32 @@ createListRefs = {
 	&nbsp;
 
 	<p>
-		These make 2 buttons, one to close the form and the other to let the user add an attraction:
+		This is an event listener that hides all the display divs:
 	</p>
+
+	<pre class="sampleCode">
+	var CloseClickListener = {
+		handleEvent: function (e) {
+			document.getElementById('StudentCenterbtn').style.display = 'none';
+    }
+}
+</pre>
+
+	&nbsp;
+
+	<p>This is an event listener that opens the form in a div</p>
+
+	<pre class="sampleCode">
+	var addAttractionClickListener = {
+		handleEvent: function (e) {
+        console.log(e);
+        document.getElementById('StudentCenterForm').style.display = 'inline-block'; 
+    }
+}
+</pre>
+
+	&nbsp;
+	<p>	Button that closes form and button that opens the add form: </p>
 
 	<pre class="sampleCode">
 	const closeBtn = m("button.Close", { onclick: CloseClickListener }, "X");
@@ -275,18 +290,135 @@ createListRefs = {
 </pre>
 
 	&nbsp;
-	<p></p>
+	<p>Options for the add attraction form: </p>
 
-<pre class="sampleCode">
-	
+	<pre class="sampleCode">
+	var options = {
+    view: function () {
+        return [
+            m("option.options[value=Johnson and Hardwick", "Johnson and Hardwick"),
+            m("option.options[value=SERC", "SERC"),
+            m("option.options[value=Student Center]", "Student Center"),
+            m("option.options[value=Paley Hall]", "Paley Hall"),
+            m("option.options[value = Presser Hall]", "Presser Hall"),
+        ]
+    }
+}
 </pre>
 
 	&nbsp;
-	<p></p>
+	<p>Create a component that will display a form: </p>
 
-<pre class="sampleCode">
-	
+	<pre class="sampleCode">
+
+	const attractionForm = {
+		view: function () {
+			return m("form#addForm", [
+				m("label.label", "Location:"),
+				m("select.input#AtractLoc", options.view()),
+
+				m("label.label", "Attraction:"),
+				m("input.input#AtracName[type=text][placeholder=Attraction Name]"),
+
+				m("label.label", "General Directions:"),
+				m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']"),
+
+				m("label.label", "Description:"),
+				m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
+
+				m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
+			])
+	 }
+	}
 </pre>
 
+	&nbsp;
+	<p>Create a method that takes the form inputs and runs it through the class, also adding it to local storage: </p>
+
+	<pre class="sampleCode">
+
+	var AttractionClickListener = {
+	  handleEvent: function (e) {
+        e.preventDefault();
+        var atrLocate = document.getElementById('AtractLoc').value;
+        var atrName = document.getElementById('AtracName').value;
+        var atrGenDirec = document.getElementById('AtracDirec').value;
+        var atrDescrip = document.getElementById('AtracDescrip').value;
+        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+        sessionStorage.setItem(atrName, JSON.stringify(obj));
+        addToLocalArray(obj);
+        location.reload();
+    }
+}
+</pre>
+
+	&nbsp;
+	<p>manipulates local storage: </p>
+
+	<pre class="sampleCode">
+	addToLocalArray = function (obj) {
+		var arrTemp = []
+		var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+		localStorage.removeItem("BuildingAttractions");
+		arrTemp = parseArr;
+		arrTemp.unshift(obj);
+		localStorage.setItem("BuildingAttractions", JSON.stringify(arrTemp));
+	}
+</pre>
+
+	&nbsp;
+	<p>This create the form div and adds UL to the divs: </p>
+
+	<pre class="sampleCode">
+	var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, attractionForm.view());
+	var displayJnH = "Hey this should be a box with text in it";
+	var displaySS = "Hey this should be a box with text in it";
+	var JnHList = m.render(m('ul.AttractionLists#JnHUL', "Nearby Attractions: "), userList(JnHArray));
+	var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
+	var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
+	var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
+	var PresserList = m('ul.AttractionLists#PresserUL', "Nearby Attractions: ");
+</pre>
+
+	&nbsp;
+	<p>This is the Student center button: </p>
+
+	<pre class="sampleCode">
+
+	const studentCenterButton = {
+	 view(vnode) {
+		 return [
+			  //this creates a button and adds an event handler as well as creating a div and hiding it
+			  m("button#StudentCenter", { onclick: ssClickListener }, ""),
+			  m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X"), m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
+		 ];
+		}
+	};
+</pre>
+
+	&nbsp;
+	<p>This is the student center event handler that handles the onclick event for the button: </p>
+
+	<pre class="sampleCode">
+	var ssClickListener = {
+		handleEvent: function (e) {
+        document.getElementById('StudentCenterbtn').style.display = 'inline-block';
+        displaySS = "This is The Student Center";
+    }
+}
+</pre>
+
+	&nbsp;
+	<p>This puts the button on the correct div on load: </p>
+
+	<pre class="sampleCode">
+
+m.mount(document.body, {
+    view() {
+        sessionToLocalArr();
+        return m(".bg", m(studentCenterButton));
+		}
+	});
+</pre>
 </body>
 	</html>
