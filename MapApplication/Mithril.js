@@ -1,79 +1,4 @@
-﻿//$(document).ready(function () {
-//    var $winwidth = $(window).width();
-//    $(".bg").attr({
-//        width: $winwidth
-//    });
-//    $(window).bind("resize", function () {
-//        var $winwidth = $(window).width();
-//        $("bg").attr({
-//            width: $winwidth
-//        });
-//    }); 
-//});
-
-//const { buildPathname } = require("mithril");
-
-//comment the below out to get the map back
-///*
-
-
-//*/
-
-
-
-
-//modal module
-//var F = m.prop(false)
-
-/*
-var modal = {
-}
-modal.visible = false;
-modal.view = function (body) {
-    return modal.visible() ? m.render(".modal", body()) : ""
-}
-//in your other view
-var myOtherView = function () {
-    //this button sets the flag to true
-    m('button[type="button"]', { onclick: modal.visible.bind(this, true) }, "Show modal"),
-        //include the modal anywhere it makes sense to
-        //its visibility is taken care by the modal itself
-        //positioning is controlled via CSS
-        modal.view(function () {
-            return m.render("p", "modal content goes here")
-  })
-}
-document.getElementById("#modal").onclick = m.withAttr(myOtherView());
-**/
-
-// some useful sample code on components 
-/*
-var appstate = null
-var appdata = ['left', 'middleLeft', 'middle', 'right']
-var ButtonComponent = {
-    view: function (vnode) {
-        return m('button', {
-            onclick: function (e) {
-                appstate = e.target.textContent
-            }
-        }, vnode.attrs.lable)
-    }
-}
-
-var App = {
-    view: function () {
-        return [
-            appdata.map(function (item) {
-                return m(ButtonComponent, { lable: item })
-            }),
-            appstate !== null && m('h2', appstate)
-        ]
-    }
-}
-m.mount(document.body, App)
-    */
-
-class Attractions {
+﻿class Attractions {
     constructor(location, attractName, genDirections, descrip, id) {
         this.attrLocation = location;
         this.attrName = attractName;
@@ -197,46 +122,7 @@ const actions = {
 
 
 
-SortLocalStorage = function () {
-    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-    pulledFromStorage = parseArr;
-    //for loop for getting index
-    var ObjName;// = "Default";
-    var objDesc;// = "Default";
-    var objdirec;// = "Default";
-    var check = pulledFromStorage;
-    console.log(pulledFromStorage);
-    for (var index = 0; index < pulledFromStorage.length; index++) {
-        check = pulledFromStorage[index];
-        console.log("entered loop");
-        console.log(pulledFromStorage.length);
-        //if block to get the location
-        if (check["attrLocation"] == "Student Center") {
-            //attempts to mount the array in a list element through the component
-            //m.render('li.lists', createDomElements(JnHArray));
-            ObjName = check["attrName"];
-            console.log(ObjName);
-            objDesc = check["attrDescrip"];
-            console.log(objDesc);
-            objdirec = check["attrDirections"];
-            console.log(objdirec);
-            //ObjName.toString();
-            //objDesc.toString();
-            //objdirec.toString();
-            //m('JnHUL', newLI);
-            //adds the index to the new array at the first position
-            JnHArray.unshift(check);
-            actions.addToJnH();
-        }
-        console.log(ObjName);
-        console.log(objDesc);
-        console.log(objdirec);
 
-    }
-    console.log("finished sorting");
-    console.log(JnHArray);
-    //createListRefs();
-}
 //this var acn be refrenced in the dom elements
 console.log(JnHArray);
 var listItems = JnHArray.forEach(element => { element.attrName});
@@ -274,73 +160,18 @@ createListRefs = {
                 console.log(objdirec);
 
                 JnHArray.unshift(check);
-                
+                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-                
             }
-
-            if (check["attrLocation"] == "Student Center") {
-                //attempts to mount the array in a list element through the component
-
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-
-
-                console.log(objdirec);
-
-                JnHArray.unshift(check);
-
-                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
-            }
-
-            if (check["attrLocation"] == "Paley Hall") {
-                //attempts to mount the array in a list element through the component
-
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-
-
-                console.log(objdirec);
-
-                JnHArray.unshift(check);
-
-                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
-            }
-
-            if (check["attrLocation"] == "Presser Hall") {
-                //attempts to mount the array in a list element through the component
-
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-
-
-                console.log(objdirec);
-
-                JnHArray.unshift(check);
-
-                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
-            }
-
-
-            
+            console.log(listItem)
+            console.log(ObjName);
+            console.log(objDesc);
+            console.log(objdirec);
         }
 
         console.log(listItems);
         return listItem
     }
- 
 }
 
 
@@ -457,7 +288,7 @@ const JnHButton = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            SortLocalStorage(),
+            //SortLocalStorage(),
             m("button#JnH", {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
