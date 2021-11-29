@@ -157,16 +157,17 @@ element.style {
     position: absolute;
     z-index: 33333;
     width: 20pc; /* this where you change johnson and hardwick hitbox dimensions*/
-
+    left:20%;
     top: 15%;
     border: 2px thick solid black;
 }
-#JNHForm form {
-    height: 95%;
-    width:95%;
-    position: absolute;
-    z-index: 1;
-    width: 20pc; /* this where you change johnson and hardwick hitbox dimensions*/
-
-    border: 2px thick solid black;
-}
+    #JNHForm form {
+        position: relative;
+        display:block;
+        width: 95%;
+        height: 80%;
+        border: 2pt thick solid black;
+        border-color: red;
+        background: gray;
+        padding: 1pc;
+    }

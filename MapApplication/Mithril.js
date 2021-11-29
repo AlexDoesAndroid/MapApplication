@@ -308,18 +308,18 @@ var options = {
 //create a component that will display a form
 const attractionForm = {
     view: function () {
-        return m("form#addForm", [
-            m("label.label", "Location:"),
-            m("select.input#AtractLoc", options.view()),
+        return m("form#addForm", { style: {height: '95%'}}, [
+            m("label.label", { style: { width: '99%' } },"Location:"),
+            m("select.input#AtractLoc", { style: { width: '99%' }}, options.view()),
 
-            m("label.label", "Attraction:"),
-            m("input.input#AtracName[type=text][placeholder=Attraction Name]"),
+            m("label.label", { style: { width: '99%' } }, "Attraction:"),
+            m("input.input#AtracName[type=text][placeholder=Attraction Name]", { style: { width: '99%' } }),
 
-            m("label.label", "General Directions:"),
-            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']"),
+            m("label.label", { style: { width: '99%' } }, "General Directions:"),
+            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']", { style: { width: '99%' } }),
 
-            m("label.label", "Description:"),
-            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
+            m("label.label", { style: { width: '99%' } }, "Description:"),
+            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']", { style: { width: '99%' } }),
 
             m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
         ])
@@ -373,7 +373,7 @@ const JnHButton = {
             //SortLocalStorage(),
             m("button#JnH", { onclick: jnhClickListener }, ""),
             m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), m("button#AddJNH", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
-            m('div.formDisplay#JNHForm', { style: { width: '60%', height: '55%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m('div.formDisplay#JNHForm', { style: { width: '20%', height: '10%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
         ]
     }
 };
