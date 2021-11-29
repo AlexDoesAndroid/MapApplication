@@ -430,7 +430,7 @@ const attractionForm = {
 
             m("label.label", { style: { display: 'block', width: '95%' } }, "Description:"),
             m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']", { style: { display: 'block', width: '95%' } }),
-
+            m("button.Close#CloseAddForm", { onclick: CloseClickListener }, "X"),
             m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
         ])
     }
@@ -503,7 +503,9 @@ const studentCenterButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#StudentCenter", { onclick: ssClickListener }, ""),
-            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, m(createStudentCenterListRefs), StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X"), m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } },
+                displaySS, m(createStudentCenterListRefs), StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener },
+                    "X"), m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
         ];
     }
 };
@@ -524,7 +526,10 @@ const SERCButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#SERC", { onclick: sercClickListener }, ""),
-            m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, SERCList, m(createSERCListRefs), m("button.Close#SERCCloseBtn", { onclick: CloseClickListener }, "X")),
+            m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } },
+                displaySS, SERCList, m(createSERCListRefs), m("button.Close#SERCCloseBtn", { onclick: CloseClickListener }, "X"),
+                m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
+
         ];
     }
 };
@@ -542,7 +547,9 @@ const Paley = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#PalyHall", { onclick: paleyClickListener }, ""),
-            m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PaleyList, m(createPaleyHallListRefs), m("button.Close#PaleyCloseBtn", { onclick: CloseClickListener }, "X")),
+            m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } },
+                displaySS, PaleyList, m(createPaleyHallListRefs), m("button.Close#PaleyCloseBtn",
+                    { onclick: CloseClickListener }, "X")),
         ];
     }
 };
@@ -560,7 +567,9 @@ const Presser = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#PresserHall", { onclick: presserClickListener }, ""),
-            m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PresserList, m(createPresserHallListRefs), m("button.Close#PresserCloseBtn", { onclick: CloseClickListener }, "X")),
+            m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }
+                , displaySS, PresserList, m(createPresserHallListRefs), m("button.Close#PresserCloseBtn"
+                    , { onclick: CloseClickListener }, "X"), m("button#AddPresser", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
         ];
     }
 };
