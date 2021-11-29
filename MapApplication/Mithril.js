@@ -37,22 +37,29 @@
 var attractionsArr = [];
 //this is a default object
 
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories.", 'Where iron owls are made.');
 attractionsArr.unshift(JNHFeild);
-const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
+const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner.", 'This is a test Object.');
 attractionsArr.unshift(JNHTest);
-const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
+const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street.', 'These three trucks are a place to get a cheap quick lunch.');
 attractionsArr.unshift(HalalTruck1);
-const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
+const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center.', 'Richies on wheels but not called Richies.');
 attractionsArr.unshift(SexyGreenTruck);
-const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
+const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center.', 'Korean and Japanese.');
 attractionsArr.unshift(ChaChaTruck);
-const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th', 'Obviously sells burgers');
+const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th.', 'Obviously sells burgers.');
 attractionsArr.unshift(BurgerTank);
-const topBap = new Attractions('Presser Hall', 'Top Bap', "In front of patio on Norris", 'Great spot for simple Korean food');
+const topBap = new Attractions('Presser Hall', 'Top Bap', "In front of patio on Norris.", 'Great spot for simple Korean food.');
 attractionsArr.unshift(topBap);
-const crepeTruck = new Attractions('Presser Hall', 'The Crepe Truck', 'Corner of 13th and Norris next to the Burger Tank', 'Sweet and savory crepes for sale');
+const crepeTruck = new Attractions('Presser Hall', 'The Crepe Truck', 'Corner of 13th and Norris next to the Burger Tank.', 'Sweet and savory crepes for sale.');
 attractionsArr.unshift(crepeTruck);
+const bellTower = new Attractions('Paley Hall', 'The Bell Tower', "You literally can't miss it.", 'A cool concrete bell tower that uses speakers to imitate a bell.');
+attractionsArr.unshift(bellTower);
+const aBagelShop = new Attractions("Paley Hall", 'Sad Bagel Hut', 'On 13th next to Payley.', "It's a bagel hut but its not THE Bagel Hut.");
+attractionsArr.unshift(aBagelShop);
+const benches = new Attractions("Paley Hall", "Benches", "Next to Payley on 12th street.", "A nice place to sit and eat lunch or study.");
+attractionsArr.unshift(benches);
+const hunnieTruck = new Attractions("SERC", "Honey Truck", "12th");
 console.log(attractionsArr + "out of the loop");
 //adds what useres input into local storage
 sessionToLocalArr = function () {
