@@ -263,7 +263,7 @@ createListRefs = {
 
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
-                //m.render('li.lists', createDomElements(JnHArray));
+
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
@@ -272,26 +272,71 @@ createListRefs = {
                 
 
                 console.log(objdirec);
-                //ObjName.toString();
-                //objDesc.toString();
-                //objdirec.toString();
-                //m('JnHUL', newLI);
-                //adds the index to the new array at the first position
-                JnHArray.unshift(check);
-                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
 
+                JnHArray.unshift(check);
+                
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
                 
-                
-                
             }
-            console.log(listItem)
-            console.log(ObjName);
-            console.log(objDesc);
-            console.log(objdirec);
+
+            if (check["attrLocation"] == "Student Center") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                JnHArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            if (check["attrLocation"] == "Paley Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                JnHArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            if (check["attrLocation"] == "Presser Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                JnHArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+
             
         }
-        console.log(count);
+
         console.log(listItems);
         return listItem
     }
