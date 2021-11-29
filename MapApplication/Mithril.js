@@ -59,7 +59,8 @@ const aBagelShop = new Attractions("Paley Hall", 'Sad Bagel Hut', 'On 13th next 
 attractionsArr.unshift(aBagelShop);
 const benches = new Attractions("Paley Hall", "Benches", "Next to Payley on 12th street.", "A nice place to sit and eat lunch or study.");
 attractionsArr.unshift(benches);
-const hunnieTruck = new Attractions("SERC", "Honey Truck", "12th");
+const hunnieTruck = new Attractions("SERC", "Honey Truck", "across the street on 12th and Norris", "Brought to you by the owners of Champs Diner");
+attractionsArr.unshift(hunnieTruck);
 console.log(attractionsArr + "out of the loop");
 //adds what useres input into local storage
 sessionToLocalArr = function () {
