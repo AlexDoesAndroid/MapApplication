@@ -188,7 +188,7 @@ createPaleyHallListRefs = {
         return listItem
     }
 }
-
+//coment
 createPresserHallListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
