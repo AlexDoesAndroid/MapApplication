@@ -78,65 +78,86 @@ var JnHArrComponent = {
     attrDirections: "",
     attrDescrip: ""
 }
-//this is a component with fucntions to be enacted in the above component
-//this is a function that selects an object based on the location name and puts it in the JnH array
-const actions = {
-    addToJnH: function () {
-        JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
-        attrLocation: ""
-        attrName: ""
-        attrDirections: ""
-        attrDescrip: ""
-    }
-}
-//this is a function that selects an object based on the location name and puts it in the JnH array
 
-//this var can be refrenced in the dom elements
-console.log(JnHArray);
-var listItems = JnHArray.forEach(element => { element.attrName});
-console.log(listItems);
-//this is a components that handles the arrays
+
+var StudentCenterArray = [];
+//this is my attempt at writing  a component that creates a list element
+var StudentCenterArrComponent = {
+    StudentCenterArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+var PaleyHallArray = [];
+//this is my attempt at writing  a component that creates a list element
+var PaleyHallArrComponent = {
+    PaleyHallArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+
+var PresserHallArray = [];
+//this is my attempt at writing  a component that creates a list element
+var PresserHallArrayArrComponent = {
+    PresserHallArrayArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+var SERCArray = [];
+//this is my attempt at writing  a component that creates a list element
+var SERCArrayArrComponent = {
+    SERCArrayArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
 
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
         pulledFromStorage = parseArr;
         //for loop for getting index
-        var ObjName;
-        var objDesc;
-        var objdirec;
-        var listItem=[];
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
         var check = pulledFromStorage;
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-            
+
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
+
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
-                //m.render('li.lists', createDomElements(JnHArray));
+
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-                
+
 
                 console.log(objdirec);
-                //ObjName.toString();
-                //objDesc.toString();
-                //objdirec.toString();
-                //m('JnHUL', newLI);
-                //adds the index to the new array at the first position
+
                 JnHArray.unshift(check);
-                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
-
-            if (check["attrLocation"] == "Presser Hall") {
+            else if (check["attrLocation"] == "Student Center") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
@@ -148,20 +169,73 @@ createListRefs = {
 
                 console.log(objdirec);
 
-                JnHArray.unshift(check);
+                StudentCenterArray.unshift(check);
 
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
 
+            else if (check["attrLocation"] == "Paley Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
 
 
+                console.log(objdirec);
+
+                PaleyHallArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            else if (check["attrLocation"] == "Presser Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                PresserHallArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            else if (check["attrLocation"] == "SERC") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                SERCArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
         }
 
+        console.log(listItem);
         return listItem
     }
 
 }
+
 
 //this should be printing all the JnH objects
 function userList() {
