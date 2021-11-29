@@ -284,7 +284,7 @@ const JnHButton = {
             //this creates a button and adds an event handler as well as creating a div and hiding it
             //SortLocalStorage(),
             m("button#JnH", { onclick: jnhClickListener }, ""),
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), closeBtn, AddAttraction),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
         ]
     }
@@ -305,7 +305,7 @@ const studentCenterButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#StudentCenter", { onclick: ssClickListener }, ""),
-            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, closeBtn),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X")),
         ];
     }
 };
@@ -326,7 +326,7 @@ const SERCButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#SERC", {onclick: sercClickListener}, ""),
-            m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, SERCList, closeBtn),
+            m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, SERCList, m("button.Close#SERCCloseBtn", { onclick: CloseClickListener }, "X")),
         ];
     }
 };
@@ -344,7 +344,7 @@ const Paley = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#PalyHall", { onclick: paleyClickListener }, ""),
-            m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PaleyList, closeBtn),
+            m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PaleyList, m("button.Close#PaleyCloseBtn", { onclick: CloseClickListener }, "X")),
         ];
     }
 };
@@ -362,7 +362,7 @@ const Presser = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#PresserHall", { onclick: presserClickListener }, ""),
-            m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PresserList, closeBtn),
+            m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PresserList, m("button.Close#PresserCloseBtn", { onclick: CloseClickListener }, "X")),
         ];
     }
 };
