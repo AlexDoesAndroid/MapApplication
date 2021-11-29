@@ -4,7 +4,6 @@
         this.attrName = attractName;
         this.attrDirections = genDirections;
         this.attrDescrip = descrip;
-        this.id = id;
         console.log("Constructor Initialized");
     }
 
@@ -33,73 +32,37 @@
     set AttractionDescription(value) {
         this.attrDescrip = value;
     }
-    get AttractionID() {
-        return this.ID;
-    }
-    set AttractionID(value) {
-        this.id = value;
-    }
 }
 //this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
 var attractionsArr = [];
 //this is a default object
+
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
+attractionsArr.unshift(JNHFeild);
+const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
+attractionsArr.unshift(JNHTest);
 const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
 attractionsArr.unshift(HalalTruck1);
 const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
 attractionsArr.unshift(SexyGreenTruck);
 const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
 attractionsArr.unshift(ChaChaTruck);
-
-console.log(attractionsArr);
-localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
-//create a method that takes the form inputs and runs it through the class, also adding it to local storage
-var AttractionClickListener = {
-    handleEvent: function (e) {
-        console.log(e)
-        e.preventDefault();
-        console.log("you got to the attraction click listener for objects")
-        var atrLocate = document.getElementById('AtractLoc').value;
-        var atrName = document.getElementById('AtracName').value;
-        var atrGenDirec = document.getElementById('AtracDirec').value;
-        var atrDescrip = document.getElementById('AtracDescrip').value;
-        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
-        localStorage.setItem(atrName, JSON.stringify(obj));
-        addToLocalArray(obj);
+console.log(attractionsArr + "out of the loop");
+//adds what useres input into local storage
+sessionToLocalArr = function () {
+    for (var i = 0; i < sessionStorage.length; i++) {
+        var index = sessionStorage.key(i);
+        var value = sessionStorage.getItem(index);
+        var val = JSON.parse(value);
+        attractionsArr.unshift(val);
+        console.log("in the loop "+ attractionsArr);
     }
-}
-
-
-addToLocalArray = function (obj) {
-    var arr = localStorage.getItem('BuildingAttractions');
-    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-    localStorage.clear();
-    attractionsArr = parseArr;
-    attractionsArr.unshift(obj);
     localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 }
 
-
-//create a method that pulls from local storage and places all those items in the an array or list thats refrenced by 
-//a component
-
-
-//alternativly write a method that creates <li> then puts them in the correct div
-//this can be done with a really long if else statement to try and match the location then put it in a UL with a 
-//specific id
 var listelements = m("li.lists", 'a variable will go here');
 var pulledFromStorage = [];
-/*
- var SortLists = {
 
-    onupdate: function () {
-        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-        pulledFromStorage = parseArr;
-    },
-    view: function () {
-
-    },
-}
-*/
 var JnHArray = [];
 //this is my attempt at writing  a component that creates a list element
 var JnHArrComponent = {
@@ -121,10 +84,7 @@ const actions = {
 }
 //this is a function that selects an object based on the location name and puts it in the JnH array
 
-
-
-
-//this var acn be refrenced in the dom elements
+//this var can be refrenced in the dom elements
 console.log(JnHArray);
 var listItems = JnHArray.forEach(element => { element.attrName});
 console.log(listItems);
@@ -135,69 +95,36 @@ createListRefs = {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
         pulledFromStorage = parseArr;
         //for loop for getting index
-        var ObjName;// = "Default";
-        var objDesc;// = "Default";
-        var objdirec;// = "Default";
-        var listItem = [];
+        var ObjName;
+        var objDesc;
+        var objdirec;
+        var listItem=[];
         var check = pulledFromStorage;
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
+            
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
-
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
-
+                //m.render('li.lists', createDomElements(JnHArray));
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
-                console.log(objdirec);
-
-                JnHArray.unshift(check);
-
-                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
-            }
-
-            if (check["attrLocation"] == "Student Center") {
-                //attempts to mount the array in a list element through the component
-
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-
+                
 
                 console.log(objdirec);
-
+                //ObjName.toString();
+                //objDesc.toString();
+                //objdirec.toString();
+                //m('JnHUL', newLI);
+                //adds the index to the new array at the first position
                 JnHArray.unshift(check);
-
-                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
-            }
-
-            if (check["attrLocation"] == "Paley Hall") {
-                //attempts to mount the array in a list element through the component
-
-                ObjName = check["attrName"];
-                console.log(ObjName);
-                objDesc = check["attrDescrip"];
-                console.log(objDesc);
-                objdirec = check["attrDirections"];
-
-
-                console.log(objdirec);
-
-                JnHArray.unshift(check);
-
+                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
@@ -230,12 +157,10 @@ createListRefs = {
 
 }
 
-
 //this should be printing all the JnH objects
 function userList() {
     return JnHArrComponent.JnHArrayComp.map(function (u) {
-       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
-        // <button>Mary</button>
+       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) 
     })
 }
 
@@ -247,9 +172,6 @@ function createDomElements(nearbyAttractions) {
         return m('li.lists', m('p', a.attrName), m('p', a.attrDirections), m('p', a.attrDescrip));
     })
 }
-
-
-
 
 //this is an event listener that hides all the display divs
 var CloseClickListener = {
@@ -294,7 +216,6 @@ var options = {
             m("option.options[value = Presser Hall]", "Presser Hall"),
         ]
     }
-
 }
 //create a component that will display a form
 const attractionForm = {
@@ -313,22 +234,39 @@ const attractionForm = {
             m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
 
             m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
-            
         ])
     }
 }
-
+//create a method that takes the form inputs and runs it through the class, also adding it to local storage
+var AttractionClickListener = {
+    handleEvent: function (e) {
+        console.log(e)
+        e.preventDefault();
+        console.log("you got to the attraction click listener for objects")
+        var atrLocate = document.getElementById('AtractLoc').value;
+        var atrName = document.getElementById('AtracName').value;
+        var atrGenDirec = document.getElementById('AtracDirec').value;
+        var atrDescrip = document.getElementById('AtracDescrip').value;
+        var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+        sessionStorage.setItem(atrName, JSON.stringify(obj));
+        addToLocalArray(obj);
+        location.reload();
+    }
+}
+//manipulates local storage
+addToLocalArray = function (obj) {
+    var arrTemp = []
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    console.log("should have the array");
+    localStorage.removeItem("BuildingAttractions");
+    arrTemp = parseArr;
+    console.log("array in local storage", arrTemp);
+    arrTemp.unshift(obj);
+    console.log(obj);
+    localStorage.setItem("BuildingAttractions", JSON.stringify(arrTemp));
+}
 //this create the form div
 var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, attractionForm.view());
-
-
-
-
-
-
-
-
-
 
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
@@ -345,21 +283,11 @@ const JnHButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             //SortLocalStorage(),
-            m("button#JnH", {
-                onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-            }, "Button"),
-            
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#JnHClose", { onclick: CloseClickListener }, "X"), AddAttraction),
+            m("button#JnH", { onclick: jnhClickListener }, ""),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), closeBtn, AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
-            
-            //m.render(document.getElementById('JnHUL'), createDomElements(JnHArray)),
-            //document.getElementById('#this').display = 'none'
-            
         ]
-        
     }
-
 };
 //this is the JNH event handler that handles the onclick event from the buttons
 var jnhClickListener = {
@@ -368,8 +296,6 @@ var jnhClickListener = {
         //this is javascript that unhides the div
         document.getElementById('JnHbtn').style.display = 'inline-block';
         displayJnH = "This is J&H";
-        
-        //here we should have a refrence to an array or an object to be put in the div
     }
 }
 
@@ -378,15 +304,8 @@ const studentCenterButton = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            m("button#StudentCenter", {
-                onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-            }, "Button"),
-            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X"), AddAttraction),
-            m('div.formDisplay#StudentCenterForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
-
-            //document.getElementById('#this').display = 'none'
-
+            m("button#StudentCenter", { onclick: ssClickListener }, ""),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, closeBtn),
         ];
     }
 };
@@ -406,14 +325,8 @@ const SERCButton = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            m("button#SERC", {
-                onclick: sercClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-            }, "Button"),
+            m("button#SERC", {onclick: sercClickListener}, ""),
             m('div.diplay#SERCDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, SERCList, closeBtn),
-
-            //document.getElementById('#this').display = 'none'
-
         ];
     }
 };
@@ -423,7 +336,6 @@ var sercClickListener = {
         //this is javascript that unhides the div
         document.getElementById('SERCDiv').style.display = 'inline-block';
         displaySS = "This is The SERC";
-        //here we should have a refrence to an array or an object to be put in the div
     }
 }
 
@@ -431,13 +343,8 @@ const Paley = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            m("button#PalyHall", {
-                onclick: paleyClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-            }, "Button"),
+            m("button#PalyHall", { onclick: paleyClickListener }, ""),
             m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PaleyList, closeBtn),
-            //document.getElementById('#this').display = 'none'
-
         ];
     }
 };
@@ -447,7 +354,6 @@ var paleyClickListener = {
         //this is javascript that unhides the div
         document.getElementById('PalyDiv').style.display = 'inline-block';
         displaySS = "This is The Paley";
-        //here we should have a refrence to an array or an object to be put in the div
     }
 }
 
@@ -455,13 +361,8 @@ const Presser = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            m("button#PresserHall", {
-                onclick: presserClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
-
-            }, "Button"),
+            m("button#PresserHall", { onclick: presserClickListener }, ""),
             m('div.diplay#PresserDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, PresserList, closeBtn),
-            //document.getElementById('#this').display = 'none'
-
         ];
     }
 };
@@ -472,18 +373,13 @@ var presserClickListener = {
         //this is javascript that unhides the div
         document.getElementById('PresserDiv').style.display = 'inline-block';
         displaySS = "This is The Presser Hall";
-        //here we should have a refrence to an array or an object to be put in the div
     }
 }
-
-
-
-
-
 
 //this puts the button on the correct div on load
 m.mount(document.body, {
     view() {
+        sessionToLocalArr();
         return m(".bg", m(JnHButton), m(studentCenterButton), m(SERCButton), m(Paley), m(Presser));
     }
 });
