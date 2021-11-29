@@ -79,60 +79,13 @@ sessionToLocalArr = function () {
 }
 
 var listelements = m("li.lists", 'a variable will go here');
+
 var pulledFromStorage = [];
-
 var JnHArray = [];
-//this is my attempt at writing  a component that creates a list element
-var JnHArrComponent = {
-    JnHArrayComp: [],
-    attrLocation: "",
-    attrName: "",
-    attrDirections: "",
-    attrDescrip: ""
-}
-
-
 var StudentCenterArray = [];
-//this is my attempt at writing  a component that creates a list element
-var StudentCenterArrComponent = {
-    StudentCenterArrayComp: [],
-    attrLocation: "",
-    attrName: "",
-    attrDirections: "",
-    attrDescrip: ""
-}
-
 var PaleyHallArray = [];
-//this is my attempt at writing  a component that creates a list element
-var PaleyHallArrComponent = {
-    PaleyHallArrayComp: [],
-    attrLocation: "",
-    attrName: "",
-    attrDirections: "",
-    attrDescrip: ""
-}
-
-
 var PresserHallArray = [];
-//this is my attempt at writing  a component that creates a list element
-var PresserHallArrayArrComponent = {
-    PresserHallArrayArrayComp: [],
-    attrLocation: "",
-    attrName: "",
-    attrDirections: "",
-    attrDescrip: ""
-}
-
 var SERCArray = [];
-//this is my attempt at writing  a component that creates a list element
-var SERCArrayArrComponent = {
-    SERCArrayArrayComp: [],
-    attrLocation: "",
-    attrName: "",
-    attrDirections: "",
-    attrDescrip: ""
-}
-
 
 createJnHListRefs = {
     view: function () {
@@ -147,38 +100,25 @@ createJnHListRefs = {
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
-
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
-
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
                 console.log(objdirec);
-
                 JnHArray.unshift(check);
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
             }
-
         }
-
         console.log(listItem);
         return listItem
     }
-
 }
-
-
 
 createStudentCenterListRefs = {
     view: function () {
@@ -193,34 +133,24 @@ createStudentCenterListRefs = {
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
-
             if (check["attrLocation"] == "Student Center") {
                 //attempts to mount the array in a list element through the component
-
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
                 console.log(objdirec);
-
                 StudentCenterArray.unshift(check);
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
             }
-
         }
-
         console.log(listItem);
         return listItem
     }
-
 }
 
         
@@ -239,34 +169,24 @@ createPaleyHallListRefs = {
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
             if (check["attrLocation"] == "Paley Hall") {
                 //attempts to mount the array in a list element through the component
-
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
                 console.log(objdirec);
-
                 PaleyHallArray.unshift(check);
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
             }
-
         }
-
         console.log(listItem);
         return listItem
     }
-
 }
 
 createPresserHallListRefs = {
@@ -282,34 +202,24 @@ createPresserHallListRefs = {
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
             if (check["attrLocation"] == "Presser Hall") {
                 //attempts to mount the array in a list element through the component
-
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
                 console.log(objdirec);
-
                 PresserHallArray.unshift(check);
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
             }
-
         }
-
         console.log(listItem);
         return listItem
     }
-
 }
 
 createSERCListRefs = {
@@ -325,33 +235,24 @@ createSERCListRefs = {
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
             if (check["attrLocation"] == "SERC") {
                 //attempts to mount the array in a list element through the component
-
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-
-
                 console.log(objdirec);
-
                 SERCArray.unshift(check);
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
             }
         }
-
         console.log(listItem);
         return listItem
     }
-
 }
 
 
@@ -376,14 +277,12 @@ var CloseClickListener = {
     handleEvent: function (e) {
         console.log(e);
         //this is javascript that unhides the div
-        
         document.getElementById('JnHbtn').style.display = 'none';
         document.getElementById('StudentCenterbtn').style.display = 'none';
         document.getElementById('SERCDiv').style.display = 'none';
         document.getElementById('PalyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
         document.getElementById('JNHForm').style.display = 'none';
-        
         console.log("The divs are closed");
         //here we should have a refrence to an array or an object to be put in the div
     }
@@ -394,7 +293,6 @@ var addAttractionClickListener = {
         console.log(e);
         //attractionForm;
         document.getElementById('JNHForm').style.display = 'inline-block';
-        
     }
 }
 
@@ -419,19 +317,20 @@ var options = {
 const attractionForm = {
     view: function () {
         return m("form#addForm", [
-            m("label.label", "Location:"),
-            m("select.input#AtractLoc", options.view()),
+            m("label.label", { style: { width: '99%' } },"Location:"),
+            m("select.input#AtractLoc", { style: { width: '99%' } }, options.view()),
 
-            m("label.label", "Attraction:"),
-            m("input.input#AtracName[type=text][placeholder=Attraction Name]"),
+            m("label.label", { style: { width: '99%' } }, "Attraction:"),
+            m("input.input#AtracName[type=text][placeholder=Attraction Name]", { style: { width: '99%' } }),
 
-            m("label.label", "General Directions:"),
-            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']"),
+            m("label.label", { style: { width: '99%' } },"General Directions:"),
+            m("input.input#AtracDirec[type=text][placeholder='around the corner from door 1']",{ style: { width: '99%' } }),
 
-            m("label.label", "Description:"),
-            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']"),
+            m("label.label", { style: { width: '99%' } }, "Description:"),
+            m("textarea.input#AtracDescrip[rows=3][cols=35][placeholder='food or something']", { style: { width: '99%' } }),
 
             m("button.button#attrFormSubmit[type=submit]", { onclick: AttractionClickListener }, "Submit"),
+            m("button.Close#CloseForm", { onclick: CloseClickListener }, "X"),
         ])
     }
 }
@@ -465,7 +364,6 @@ addToLocalArray = function (obj) {
 }
 //this create the form div
 var formDiv = m('div.formDisplay#JNHForm', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, attractionForm.view());
-
 var displayJnH = "Hey this should be a box with text in it";
 var displaySS = "Hey this should be a box with text in it";
 //these add UL to the divs
@@ -474,7 +372,6 @@ var SERCList = m('ul.AttractionLists#SercUL', "Nearby Attractions: ");
 var PaleyList = m('ul.AttractionLists#PaleyUL', "Nearby Attractions: ");
 var StudentCenterList = m('ul.AttractionLists#SSUL', "Nearby Attractions: ");
 var PresserList = m('ul.AttractionLists#PresserUL', "Nearby Attractions: ");
-
 //this is the JNH button, should always be the first button
 const JnHButton = {
     view(vnode) {
@@ -483,7 +380,7 @@ const JnHButton = {
             //SortLocalStorage(),
             m("button#JnH", { onclick: jnhClickListener }, ""),
             m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createJnHListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), m("button#AddJNH", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
-            m('div.formDisplay#JNHForm', { style: { width: '60%', height: '55%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m('div.formDisplay#JNHForm', { style: { width: '20%', height: '10%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
         ]
     }
 };
