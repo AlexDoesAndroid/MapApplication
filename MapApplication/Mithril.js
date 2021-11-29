@@ -47,9 +47,12 @@ const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Do
 attractionsArr.unshift(SexyGreenTruck);
 const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
 attractionsArr.unshift(ChaChaTruck);
-const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th', 'Obviously sells burgers')
-const guacoLoco
-const crepeTruck
+const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th', 'Obviously sells burgers');
+attractionsArr.unshift(BurgerTank);
+const topBap = new Attractions('Presser Hall', 'Top Bap', "In front of patio on Norris", 'Great spot for simple Korean food');
+attractionsArr.unshift(topBap);
+const crepeTruck = new Attractions('Presser Hall', 'The Crepe Truck', 'Corner of 13th and Norris next to the Burger Tank', 'Sweet and savory crepes for sale');
+attractionsArr.unshift(crepeTruck);
 console.log(attractionsArr + "out of the loop");
 //adds what useres input into local storage
 sessionToLocalArr = function () {
