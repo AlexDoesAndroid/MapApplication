@@ -33,24 +33,19 @@
     set AttractionDescription(value) {
         this.attrDescrip = value;
     }
-    get AttractionID() {
-        return this.ID;
-    }
-    set AttractionID(value) {
-        this.id = value;
-    }
 }
+
 //this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
 var attractionsArr = [];
 //this is a default object
-const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch', 1);
+const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
 attractionsArr.unshift(HalalTruck1);
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.', 2);
-attractionsArr.unshift(JNHFeild);
-const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object', 3);
-attractionsArr.unshift(JNHTest);
-console.log(attractionsArr);
+const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
+attractionsArr.unshift(SexyGreenTruck);
+const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
+attractionsArr.unshift(ChaChaTruck);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
 var AttractionClickListener = {
     handleEvent: function (e) {
@@ -85,20 +80,9 @@ addToLocalArray = function (obj) {
 //alternativly write a method that creates <li> then puts them in the correct div
 //this can be done with a really long if else statement to try and match the location then put it in a UL with a 
 //specific id
-var listelements = m("li.lists", 'a variable will go here');
-var pulledFromStorage = [];
-/*
- var SortLists = {
 
-    onupdate: function () {
-        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-        pulledFromStorage = parseArr;
-    },
-    view: function () {
 
-    },
-}
-*/
+
 var JnHArray = [];
 //this is my attempt at writing  a component that creates a list element
 var JnHArrComponent = {
@@ -108,7 +92,8 @@ var JnHArrComponent = {
     attrDirections: "",
     attrDescrip: ""
 }
-//this is a component with fucntions to be enacted o the above component
+//this is a component with fucntions to be enacted in the above component
+//this is a function that selects an object based on the location name and puts it in the JnH array
 const actions = {
     addToJnH: function () {
         JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
@@ -118,16 +103,8 @@ const actions = {
         attrDescrip: ""
     }
 }
-//this is a function that selects an object based on the location name and puts it in the JnH array
 
-
-
-
-//this var acn be refrenced in the dom elements
-console.log(JnHArray);
-var listItems = JnHArray.forEach(element => { element.attrName});
-console.log(listItems);
-//this is a components that handles the arrays
+var pulledFromStorage = [];
 
 createListRefs = {
     view: function () {
@@ -223,7 +200,6 @@ createListRefs = {
 
         }
 
-        console.log(listItems);
         return listItem
     }
 
@@ -233,12 +209,11 @@ createListRefs = {
 //this should be printing all the JnH objects
 function userList() {
     return JnHArrComponent.JnHArrayComp.map(function (u) {
-       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) // <button>John</button>
-        // <button>Mary</button>
+       return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) 
     })
 }
 
-//m.render(document.getElementById('JnHUL'), userList(JnHArray))
+
 
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {
