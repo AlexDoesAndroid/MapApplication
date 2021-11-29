@@ -2,7 +2,37 @@
 
 }
 
+#SERCCloseBtn {
+    display: block;
+    position:absolute;
+    left:95%;
+    top: 2%;
+}
+#PaleyCloseBtn {
+    display: block;
+    position: absolute;
+    left: 95%;
+    top: 2%;
+}
+#CloseJNH {
+    display: block;
+    position: absolute;
+    left: 95%;
+    top: 2%;
+}
 
+#PresserCloseBtn {
+    display: block;
+    position: absolute;
+    left: 95%;
+    top: 2%;
+}
+#StudentCenterClose {
+    display: block;
+    position: absolute;
+    left: 95%;
+    top: 2%;
+}
 body, html {
     height: 100%;
     margin: 0;
