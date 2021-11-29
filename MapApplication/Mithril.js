@@ -43,12 +43,13 @@
 //this is the array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
 var attractionsArr = [];
 //this is a default object
-const HalalTruck1 = new Attractions('Student Center', 'Halal Truck 1', "Outside door 1 across the street", 'Place to get a cheap quick lunch', 1);
+const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
 attractionsArr.unshift(HalalTruck1);
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.', 2);
-attractionsArr.unshift(JNHFeild);
-const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object', 3);
-attractionsArr.unshift(JNHTest);
+const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
+attractionsArr.unshift(SexyGreenTruck);
+const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
+attractionsArr.unshift(ChaChaTruck);
+
 console.log(attractionsArr);
 localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
 //create a method that takes the form inputs and runs it through the class, also adding it to local storage
@@ -349,7 +350,7 @@ const JnHButton = {
 
             }, "Button"),
             
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), closeBtn, AddAttraction),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#JnHClose", { onclick: CloseClickListener }, "X"), AddAttraction),
             m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
             
             //m.render(document.getElementById('JnHUL'), createDomElements(JnHArray)),
@@ -381,7 +382,8 @@ const studentCenterButton = {
                 onclick: ssClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
             }, "Button"),
-            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, closeBtn),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X"), AddAttraction),
+            m('div.formDisplay#StudentCenterForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
 
             //document.getElementById('#this').display = 'none'
 
