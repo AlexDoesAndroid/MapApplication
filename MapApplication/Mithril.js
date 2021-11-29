@@ -197,46 +197,7 @@ const actions = {
 
 
 
-SortLocalStorage = function () {
-    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
-    pulledFromStorage = parseArr;
-    //for loop for getting index
-    var ObjName;// = "Default";
-    var objDesc;// = "Default";
-    var objdirec;// = "Default";
-    var check = pulledFromStorage;
-    console.log(pulledFromStorage);
-    for (var index = 0; index < pulledFromStorage.length; index++) {
-        check = pulledFromStorage[index];
-        console.log("entered loop");
-        console.log(pulledFromStorage.length);
-        //if block to get the location
-        if (check["attrLocation"] == "Student Center") {
-            //attempts to mount the array in a list element through the component
-            //m.render('li.lists', createDomElements(JnHArray));
-            ObjName = check["attrName"];
-            console.log(ObjName);
-            objDesc = check["attrDescrip"];
-            console.log(objDesc);
-            objdirec = check["attrDirections"];
-            console.log(objdirec);
-            //ObjName.toString();
-            //objDesc.toString();
-            //objdirec.toString();
-            //m('JnHUL', newLI);
-            //adds the index to the new array at the first position
-            JnHArray.unshift(check);
-            actions.addToJnH();
-        }
-        console.log(ObjName);
-        console.log(objDesc);
-        console.log(objdirec);
 
-    }
-    console.log("finished sorting");
-    console.log(JnHArray);
-    //createListRefs();
-}
 //this var acn be refrenced in the dom elements
 console.log(JnHArray);
 var listItems = JnHArray.forEach(element => { element.attrName});
@@ -279,23 +240,17 @@ createListRefs = {
                 //adds the index to the new array at the first position
                 JnHArray.unshift(check);
                 //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
-
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-                
-                
-                
             }
             console.log(listItem)
             console.log(ObjName);
             console.log(objDesc);
             console.log(objdirec);
-            
         }
         console.log(count);
         console.log(listItems);
         return listItem
     }
- 
 }
 
 
@@ -412,7 +367,7 @@ const JnHButton = {
     view(vnode) {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
-            SortLocalStorage(),
+            //SortLocalStorage(),
             m("button#JnH", {
                 onclick: jnhClickListener /*{ console.log(vnode); displayThis = "This is J&H"; m('div.diplay#this', { style: { display: 'inline-block' } }); }*/
 
