@@ -37,22 +37,30 @@
 var attractionsArr = [];
 //this is a default object
 
-const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories", 'Where iron owls are made.');
+const JNHFeild = new Attractions('Johnson and Hardwick', 'Points of interest: Peabody Field', "Services: Student Dormitories.", 'Where iron owls are made.');
 attractionsArr.unshift(JNHFeild);
-const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner", 'This is a test Object');
+const JNHTest = new Attractions('Johnson and Hardwick', 'Test Object', "Around the corner.", 'This is a test Object.');
 attractionsArr.unshift(JNHTest);
-const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
+const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street.', 'These three trucks are a place to get a cheap quick lunch.');
 attractionsArr.unshift(HalalTruck1);
-const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
+const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center.', 'Richies on wheels but not called Richies.');
 attractionsArr.unshift(SexyGreenTruck);
-const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
+const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center.', 'Korean and Japanese.');
 attractionsArr.unshift(ChaChaTruck);
-const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th', 'Obviously sells burgers');
+const BurgerTank = new Attractions('Presser Hall', 'Burger Tank', 'The Corner of Norris and 13th.', 'Obviously sells burgers.');
 attractionsArr.unshift(BurgerTank);
-const topBap = new Attractions('Presser Hall', 'Top Bap', "In front of patio on Norris", 'Great spot for simple Korean food');
+const topBap = new Attractions('Presser Hall', 'Top Bap', "In front of patio on Norris.", 'Great spot for simple Korean food.');
 attractionsArr.unshift(topBap);
-const crepeTruck = new Attractions('Presser Hall', 'The Crepe Truck', 'Corner of 13th and Norris next to the Burger Tank', 'Sweet and savory crepes for sale');
+const crepeTruck = new Attractions('Presser Hall', 'The Crepe Truck', 'Corner of 13th and Norris next to the Burger Tank.', 'Sweet and savory crepes for sale.');
 attractionsArr.unshift(crepeTruck);
+const bellTower = new Attractions('Paley Hall', 'The Bell Tower', "You literally can't miss it.", 'A cool concrete bell tower that uses speakers to imitate a bell.');
+attractionsArr.unshift(bellTower);
+const aBagelShop = new Attractions("Paley Hall", 'Sad Bagel Hut', 'On 13th next to Payley.', "It's a bagel hut but its not THE Bagel Hut.");
+attractionsArr.unshift(aBagelShop);
+const benches = new Attractions("Paley Hall", "Benches", "Next to Payley on 12th street.", "A nice place to sit and eat lunch or study.");
+attractionsArr.unshift(benches);
+const hunnieTruck = new Attractions("SERC", "Honey Truck", "across the street on 12th and Norris", "Brought to you by the owners of Champs Diner");
+attractionsArr.unshift(hunnieTruck);
 console.log(attractionsArr + "out of the loop");
 //adds what useres input into local storage
 sessionToLocalArr = function () {
@@ -78,64 +86,86 @@ var JnHArrComponent = {
     attrDirections: "",
     attrDescrip: ""
 }
-//this is a component with fucntions to be enacted o the above component
-const actions = {
-    addToJnH: function () {
-        JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
-        attrLocation: ""
-        attrName: ""
-        attrDirections: ""
-        attrDescrip: ""
-    }
-}
-//this is a function that selects an object based on the location name and puts it in the JnH array
 
-//this var can be refrenced in the dom elements
-console.log(JnHArray);
-var listItems = JnHArray.forEach(element => { element.attrName});
-console.log(listItems);
-//this is a components that handles the arrays
+
+var StudentCenterArray = [];
+//this is my attempt at writing  a component that creates a list element
+var StudentCenterArrComponent = {
+    StudentCenterArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+var PaleyHallArray = [];
+//this is my attempt at writing  a component that creates a list element
+var PaleyHallArrComponent = {
+    PaleyHallArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+
+var PresserHallArray = [];
+//this is my attempt at writing  a component that creates a list element
+var PresserHallArrayArrComponent = {
+    PresserHallArrayArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
+var SERCArray = [];
+//this is my attempt at writing  a component that creates a list element
+var SERCArrayArrComponent = {
+    SERCArrayArrayComp: [],
+    attrLocation: "",
+    attrName: "",
+    attrDirections: "",
+    attrDescrip: ""
+}
+
 
 createListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
         pulledFromStorage = parseArr;
         //for loop for getting index
-        var ObjName;
-        var objDesc;
-        var objdirec;
-        var listItem=[];
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
         var check = pulledFromStorage;
         var count = 0;
         for (var index = 0; index < pulledFromStorage.length; index++) {
             count++;
-            
+
             var check = pulledFromStorage[index];
             console.log("entered loop");
             //if block to get the location
+
             if (check["attrLocation"] == "Johnson and Hardwick") {
                 //attempts to mount the array in a list element through the component
-                //m.render('li.lists', createDomElements(JnHArray));
+
                 ObjName = check["attrName"];
                 console.log(ObjName);
                 objDesc = check["attrDescrip"];
                 console.log(objDesc);
                 objdirec = check["attrDirections"];
-                
+
 
                 console.log(objdirec);
-                //ObjName.toString();
-                //objDesc.toString();
-                //objdirec.toString();
-                //m('JnHUL', newLI);
-                //adds the index to the new array at the first position
+
                 JnHArray.unshift(check);
-                //return listItems[index] = m('li.lists#' + check["attrName"], m('p', check["attrName"]), m('p', check["attrDirections"]), m('p', check["attrDescrip"]));
+
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
-
-            if (check["attrLocation"] == "Presser Hall") {
+            else if (check["attrLocation"] == "Student Center") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
@@ -147,21 +177,73 @@ createListRefs = {
 
                 console.log(objdirec);
 
-                JnHArray.unshift(check);
+                StudentCenterArray.unshift(check);
 
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
 
+            else if (check["attrLocation"] == "Paley Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
 
 
+                console.log(objdirec);
+
+                PaleyHallArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            else if (check["attrLocation"] == "Presser Hall") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                PresserHallArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
+
+            else if (check["attrLocation"] == "SERC") {
+                //attempts to mount the array in a list element through the component
+
+                ObjName = check["attrName"];
+                console.log(ObjName);
+                objDesc = check["attrDescrip"];
+                console.log(objDesc);
+                objdirec = check["attrDirections"];
+
+
+                console.log(objdirec);
+
+                SERCArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+
+            }
         }
 
-        console.log(listItems);
+        console.log(listItem);
         return listItem
     }
 
 }
+
 
 //this should be printing all the JnH objects
 function userList() {
@@ -170,7 +252,7 @@ function userList() {
     })
 }
 
-//m.render(document.getElementById('JnHUL'), userList(JnHArray))
+
 
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {

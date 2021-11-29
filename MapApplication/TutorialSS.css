@@ -12,7 +12,8 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 200%;
+        width: 25%;
     }
 
         .topnav a:hover {
@@ -28,21 +29,26 @@
 .sampleCode {
     display: block;
     padding: 3px 3px 2px;
-    font-size: 14px;
+    font-size: 150%;
     line-height: 20px;
-    width: 100%;
     background-color: #333;
     font-family: arial;
     color: #f7f7f7;
     font-weight: bold;
 }
+
+h1 {
+    text-align: left;
+    font-size: 150%;
+}
 p {
     text-align: left;
+    font-size: 115%;
 }
 
 img {
     display: block;
-    width: 25%;
+    width: 35%;
 }
 
 
@@ -50,6 +56,8 @@ img {
 footer {
     text-align: center;
     padding: 3px;
+    width: 100%;
     background-color: grey;
     color: white;
+    font-size: 200%;
 }
