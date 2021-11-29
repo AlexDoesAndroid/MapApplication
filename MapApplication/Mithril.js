@@ -375,7 +375,7 @@ const JnHButton = {
             //this creates a button and adds an event handler as well as creating a div and hiding it
             //SortLocalStorage(),
             m("button#JnH", { onclick: jnhClickListener }, ""),
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), m("button#AddJNH", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createJnHListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), m("button#AddJNH", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
             m('div.formDisplay#JNHForm', { style: { width: '20%', height: '10%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
         ]
     }
