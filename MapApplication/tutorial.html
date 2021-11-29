@@ -83,13 +83,210 @@
 	<p>Running this code will give you: </p>
 	<img src="images/wrapMithril.PNG" />
 
+	<p>The first step to this application is creating a basic class for attractions, with a constructer, getters and setters for the attributes it needs: </p>
+	<pre class="sampleCode">
+	class Attractions {
+	 constructor(location, attractName, genDirections, descrip, id) {
+	  this.attrLocation = location;
+	  this.attrName = attractName;
+  	  this.attrDirections = genDirections;
+	  this.attrDescrip = descrip;
+	  this.id = id;
+	  console.log("Constructor Initialized");
+	}
 
+	get TheLocation() {
+	  return this.attrLocation
+	}
+	set TheLocation(value) {
+	  this.attrLocation = value;
 
+	 }
+	 get AttractionName() {
+	  return this.attrName;
+	 }
+	 set AttractionName(value) {
+	  this.attrName = value
+	 }
+	 get AtrractionDescription() {
+	  return this.attrDescrip;
+	 }
+	 set AttractionDescription(value) {
+	  this.attrDescrip = value;
+	 }
+	 get AttractionDescription() {
+	  return this.attrDescrip;
+	 }
+	 set AttractionDescription(value) {
+	  this.attrDescrip = value;
+	 }
+	 get AttractionID() {
+	  return this.ID;
+	 }
+	 set AttractionID(value) {
+	  this.id = value;
+	 }
+	}
+</pre>
+	&nbsp;
+	<p>
+		attractionsArr is a array used for pulling and storing, use another one for other functions aka use a fresh copy every time you want to do something with the objects
+		The various attractions are populated following the attributes stated in the Attractions Class:
+	</p>
 
-	<!--
-	 Mention setting styling with Mithirl
-	 -->
+<pre class="sampleCode">
+	var attractionsArr = [];
 
+	const HalalTruck1 = new Attractions('Student Center', 'Halal Trucks', 'Outside door 1 across the street', 'These three trucks are a place to get a cheap quick lunch');
+		attractionsArr.unshift(HalalTruck1);
+
+	const SexyGreenTruck = new Attractions('Student Center', 'Sexy green truck', 'Down W Montgomery Ave next to the student center', 'Richies on wheels but not called Richies');
+		attractionsArr.unshift(SexyGreenTruck);
+
+	const ChaChaTruck = new Attractions('Student Center', 'Cha Cha food truck', 'Down W Montgomery Ave next to the student center', 'Korean and Japanese');
+		attractionsArr.unshift(ChaChaTruck);
+
+	localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+</pre>
+
+	&nbsp;
+	<p>create a method that takes the form inputs and runs it through the class, also adding it to local storage</p>
+
+<pre class="sampleCode">
+	var AttractionClickListener = {
+		handleEvent: function (e) {
+			console.log(e)
+		 e.preventDefault();
+		 var atrLocate = document.getElementById('AtractLoc').value;
+		 var atrName = document.getElementById('AtracName').value;
+		 var atrGenDirec = document.getElementById('AtracDirec').value;
+		 var atrDescrip = document.getElementById('AtracDescrip').value;
+		 var obj = new Attractions(atrLocate, atrName, atrGenDirec, atrDescrip);
+		 localStorage.setItem(atrName, JSON.stringify(obj));
+         addToLocalArray(obj);
+    }
+}
+</pre>
+
+	&nbsp;
+
+<pre class="sampleCode">
+addToLocalArray = function (obj) {
+    var arr = localStorage.getItem('BuildingAttractions');
+    var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+    localStorage.clear();
+    attractionsArr = parseArr;
+    attractionsArr.unshift(obj);
+    localStorage.setItem('BuildingAttractions', JSON.stringify(attractionsArr));
+}
+</pre>
+
+	&nbsp;
+	<p>
+		A component that creates a list element, a component with fucntions to be enacted in the above component and a function that selects an object based on the location name and puts it in the JnH array:
+	</p>
+
+	<pre class="sampleCode">
+	var JnHArray = [];
+
+	var JnHArrComponent = {
+	 JnHArrayComp: [],
+	 attrLocation: "",
+	 attrName: "",
+	 attrDirections: "",
+	 attrDescrip: ""
+}
+
+const actions = {
+    addToJnH: function () {
+        JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
+        attrLocation: ""
+        attrName: ""
+        attrDirections: ""
+        attrDescrip: ""
+    }
+}
+</pre>
+
+	&nbsp;
+	<p>
+		This function is responsible for determining which button has been pressed and assigning attractions based on which button was clicked.
+		In this example the Attractions that are located near the Student Center and returns them in a bulleted list with Mithril.
+		This function can then be updated with additional if statments for each additional button added to the map.
+	</p>
+
+	<pre class="sampleCode">
+var pulledFromStorage = [];
+
+createListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+
+        pulledFromStorage = parseArr;
+        var ObjName;
+        var objDesc;
+        var objdirec;
+        var listItem = [];
+        var check = pulledFromStorage;
+        var count = 0;
+
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            count++;
+
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+
+            if (check["attrLocation"] == "Student Center") {
+
+                ObjName = check["attrName"];
+                objDesc = check["attrDescrip"];
+                objdirec = check["attrDirections"];
+
+                JnHArray.unshift(check);
+
+                listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
+            }  
+		}
+        return listItem
+    }
+}
+
+</pre>
+	&nbsp;
+
+	<p>This function prints all the Student Center objects</p>
+
+	<pre class="sampleCode">
+	function userList() {
+	 return StudentCeterArrComponent.StudentCeterArrayComp.map(function (u) {
+	    return m("li", { key: u.id }, u.attrName, u.attrDirections, u.attrDescrip) 
+	 })
+	}
+</pre>
+	&nbsp;
+
+	<p>
+		These make 2 buttons, one to close the form and the other to let the user add an attraction:
+	</p>
+
+	<pre class="sampleCode">
+	const closeBtn = m("button.Close", { onclick: CloseClickListener }, "X");
+	const AddAttraction = m("button#Add", { onclick: addAttractionClickListener }, "Add Nearby Attraction");
+</pre>
+
+	&nbsp;
+	<p></p>
+
+<pre class="sampleCode">
+	
+</pre>
+
+	&nbsp;
+	<p></p>
+
+<pre class="sampleCode">
+	
+</pre>
 
 </body>
 	</html>

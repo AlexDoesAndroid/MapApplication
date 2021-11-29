@@ -85,7 +85,8 @@ var JnHArrComponent = {
     attrDirections: "",
     attrDescrip: ""
 }
-//this is a component with fucntions to be enacted o the above component
+//this is a component with fucntions to be enacted in the above component
+//this is a function that selects an object based on the location name and puts it in the JnH array
 const actions = {
     addToJnH: function () {
         JnHArrComponent.JnHArrayComp.push(JnHArrComponent.attrLocation, JnHArrComponent.attrName, JnHArrComponent.attrDirections, JnHArrComponent.attrDescrip)
@@ -164,7 +165,6 @@ createListRefs = {
 
         }
 
-        console.log(listItems);
         return listItem
     }
 
@@ -177,7 +177,7 @@ function userList() {
     })
 }
 
-//m.render(document.getElementById('JnHUL'), userList(JnHArray))
+
 
 //this is a function that trys to create a dom element. this could maybe be used after selecting an array index
 function createDomElements(nearbyAttractions) {
