@@ -188,7 +188,7 @@ var CloseClickListener = {
         document.getElementById('JnHbtn').style.display = 'none';
         document.getElementById('StudentCenterbtn').style.display = 'none';
         document.getElementById('SERCDiv').style.display = 'none';
-        document.getElementById('PaleyDiv').style.display = 'none';
+        document.getElementById('PalyDiv').style.display = 'none';
         document.getElementById('PresserDiv').style.display = 'none';
         document.getElementById('JNHForm').style.display = 'none';
         
