@@ -76,7 +76,7 @@ element.style {
     z-index: 600;
     width: 20%;
     border-radius: 30px 0px 30px 30px;
-    height: 10%;
+    height: auto;
     border: 2pt thick solid black;
     top: 12%;
     left: 19%;
@@ -106,7 +106,7 @@ element.style {
     z-index: 100;
     width: 20%;
     border-radius: 30px 0px 30px 30px;
-    height: 10%;
+    height: auto;
     border: 2pt thick solid black;
     top: 65%;
     left: 23%;
@@ -131,7 +131,7 @@ element.style {
     z-index: 100;
     width: 20%;
     border-radius: 30px 0px 30px 30px;
-    height: 10%;
+    height: auto;
     border: 2pt thick solid black;
     top: 35%;
     left: 51%;
@@ -156,7 +156,7 @@ element.style {
     z-index: 100;
     width: 20%;
     border-radius: 30px 0px 30px 30px;
-    height: 10%;
+    height: auto;
     border: 2pt thick solid black;
     top: 45%;
     left: 51%;
@@ -180,7 +180,7 @@ element.style {
     z-index: 50;
     width: 20%;
     border-radius: 30px 0px 30px 30px;
-    height: 10%;
+    height: auto;
     border: 2pt thick solid black;
     top: 22%;
     left: 51%;
