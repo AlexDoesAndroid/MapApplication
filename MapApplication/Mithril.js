@@ -59,7 +59,12 @@ const aBagelShop = new Attractions("Paley Hall", 'Sad Bagel Hut', 'On 13th next 
 attractionsArr.unshift(aBagelShop);
 const benches = new Attractions("Paley Hall", "Benches", "Next to Payley on 12th street.", "A nice place to sit and eat lunch or study.");
 attractionsArr.unshift(benches);
-const hunnieTruck = new Attractions("SERC", "Honey Truck", "12th");
+const hunnieTruck = new Attractions("SERC", "Honey Truck", "across the street on 12th and Norris", "Brought to you by the owners of Champs Diner");
+attractionsArr.unshift(hunnieTruck);
+const footLong = new Attractions("SERC", "Foot Long Truck", "Across the street from the 12th street entrance towards Norris", "Cheap cheap sandwiches");
+attractionsArr.unshift(footLong);
+const zzzza = new Attractions("SERC", "Brother's Pizza Inc.", "Across the street from the 12th street entrance towards Norris", "They got pizza in a truck");
+attractionsArr.unshift(zzzza);
 console.log(attractionsArr + "out of the loop");
 //adds what useres input into local storage
 sessionToLocalArr = function () {
@@ -413,7 +418,7 @@ var options = {
 //create a component that will display a form
 const attractionForm = {
     view: function () {
-        return m("form", [
+        return m("form#addForm", [
             m("label.label", "Location:"),
             m("select.input#AtractLoc", options.view()),
 
@@ -477,8 +482,8 @@ const JnHButton = {
             //this creates a button and adds an event handler as well as creating a div and hiding it
             //SortLocalStorage(),
             m("button#JnH", { onclick: jnhClickListener }, ""),
-            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), AddAttraction),
-            m('div.formDisplay#JNHForm', { style: { background: 'white', display: 'none', padding: '1%' } }, attractionForm.view()),
+            m('div.diplay#JnHbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displayJnH, m(createListRefs), m("button.Close#CloseJNH", { onclick: CloseClickListener }, "X"), m("button#AddJNH", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
+            m('div.formDisplay#JNHForm', { style: { width: '60%', height: '55%', background: 'gray', border: 'solid 2pc #A22036', display: 'none', padding: '1%' } }, attractionForm.view()),
         ]
     }
 };
@@ -498,7 +503,7 @@ const studentCenterButton = {
         return [
             //this creates a button and adds an event handler as well as creating a div and hiding it
             m("button#StudentCenter", { onclick: ssClickListener }, ""),
-            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X")),
+            m('div.diplay#StudentCenterbtn', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } }, displaySS, StudentCenterList, m("button.Close#StudentCenterClose", { onclick: CloseClickListener }, "X"), m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener }, "Add Nearby Attraction")),
         ];
     }
 };
