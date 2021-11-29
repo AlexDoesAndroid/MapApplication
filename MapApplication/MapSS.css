@@ -82,6 +82,7 @@ element.style {
     left: 19%;
     border-color: red;
     background:gray;
+    color: aliceblue;
 }
 
     .formDisplay {
@@ -111,6 +112,7 @@ element.style {
     left: 23%;
     border-color: red;
     background: gray;
+    color:aliceblue;
 }
 
 #SERC {
@@ -135,6 +137,8 @@ element.style {
     left: 51%;
     border-color: red;
     background: gray;
+    color:aliceblue;
+    
 }
 #PalyHall {
     position: absolute;
@@ -147,6 +151,7 @@ element.style {
     opacity: 0.2;
 }
 #PalyDiv {
+    color:aliceblue;
     position: absolute;
     z-index: 100;
     width: 20%;
@@ -170,6 +175,7 @@ element.style {
     opacity: 0.2;
 }
 #PresserDiv {
+    color:aliceblue;
     position: absolute;
     z-index: 50;
     width: 20%;
