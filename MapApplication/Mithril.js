@@ -129,7 +129,7 @@ var SERCArrayArrComponent = {
 }
 
 
-createListRefs = {
+createJnHListRefs = {
     view: function () {
         var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
         pulledFromStorage = parseArr;
@@ -164,7 +164,36 @@ createListRefs = {
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
 
             }
-            else if (check["attrLocation"] == "Student Center") {
+
+        }
+
+        console.log(listItem);
+        return listItem
+    }
+
+}
+
+
+
+createStudentCenterListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        //for loop for getting index
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
+        var check = pulledFromStorage;
+        var count = 0;
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            count++;
+
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+            //if block to get the location
+
+            if (check["attrLocation"] == "Student Center") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
@@ -179,10 +208,37 @@ createListRefs = {
                 StudentCenterArray.unshift(check);
 
                 listItem.unshift(m('ul.lists#' + check["attrName"], m('li', check["attrName"]), m('li', check["attrDirections"]), m('li', check["attrDescrip"])));
-
             }
 
-            else if (check["attrLocation"] == "Paley Hall") {
+        }
+
+        console.log(listItem);
+        return listItem
+    }
+
+}
+
+        
+
+
+createPaleyHallListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        //for loop for getting index
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
+        var check = pulledFromStorage;
+        var count = 0;
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            count++;
+
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+            //if block to get the location
+            if (check["attrLocation"] == "Paley Hall") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
@@ -200,7 +256,32 @@ createListRefs = {
 
             }
 
-            else if (check["attrLocation"] == "Presser Hall") {
+        }
+
+        console.log(listItem);
+        return listItem
+    }
+
+}
+
+createPresserHallListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        //for loop for getting index
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
+        var check = pulledFromStorage;
+        var count = 0;
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            count++;
+
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+            //if block to get the location
+            if (check["attrLocation"] == "Presser Hall") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
@@ -218,7 +299,32 @@ createListRefs = {
 
             }
 
-            else if (check["attrLocation"] == "SERC") {
+        }
+
+        console.log(listItem);
+        return listItem
+    }
+
+}
+
+createSERCListRefs = {
+    view: function () {
+        var parseArr = JSON.parse(localStorage.getItem('BuildingAttractions'));
+        pulledFromStorage = parseArr;
+        //for loop for getting index
+        var ObjName;// = "Default";
+        var objDesc;// = "Default";
+        var objdirec;// = "Default";
+        var listItem = [];
+        var check = pulledFromStorage;
+        var count = 0;
+        for (var index = 0; index < pulledFromStorage.length; index++) {
+            count++;
+
+            var check = pulledFromStorage[index];
+            console.log("entered loop");
+            //if block to get the location
+            if (check["attrLocation"] == "SERC") {
                 //attempts to mount the array in a list element through the component
 
                 ObjName = check["attrName"];
