@@ -549,7 +549,8 @@ const Paley = {
             m("button#PalyHall", { onclick: paleyClickListener }, ""),
             m('div.diplay#PalyDiv', { style: { background: '#A22036', display: 'none', padding: '1%', border: 'dashed 6pt gray' } },
                 displaySS, PaleyList, m(createPaleyHallListRefs), m("button.Close#PaleyCloseBtn",
-                    { onclick: CloseClickListener }, "X")),
+                    { onclick: CloseClickListener }, "X"), m("button#AddStudentCenterBtn", { onclick: addAttractionClickListener },
+                        "Add Nearby Attraction")),
         ];
     }
 };
